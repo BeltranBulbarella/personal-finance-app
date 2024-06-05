@@ -7,19 +7,23 @@ This repository contains the code for a comprehensive investment management syst
 ### Frontend
 - **Framework**: React (with TypeScript)
 - **Libraries**:
-  - Material-UI or Chakra UI for UI components with built-in light and dark themes
-  - D3.js or Recharts for interactive and responsive charts
+  - Material-UI for UI components with built-in light and dark themes
+  - Recharts for interactive and responsive charts
+- **Testing**:
+  - Cypress: For end-to-end testing, ensuring that the application functions correctly from a user's perspective. It supports both unit and integration tests for the frontend.    
 
 ### Backend
 - **Framework**: Express (Node.js)
 - **ORM**: Prisma
 - **Language**: TypeScript
 - **Database**: PostgreSQL (primary), Redis (for session management and caching)
+- **Testing**:
+  - Jest: Ideal for backend testing due to its simplicity and support for testing Node.js applications. It can handle both unit and integration tests effectively.
 
 ### Additional Tools
 - **GraphQL**: For efficient data fetching
-- **Docker**: For containerization and consistent deployment
-- **CI/CD**: Jenkins or GitHub Actions for automated testing and deployment
+- **Docker**: Description: Used for containerizing the application, ensuring consistency across various development and production environments.
+- **CI/CD**: GitHub Actions for automated testing and deployment
 
 ## Project Structure
 
