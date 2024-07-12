@@ -1,9 +1,10 @@
 import AuthCard from "@/app/components/common/Card/AuthCard";
+import {Box} from "@mui/material";
 
-export default function Home() {
+export default function Page() {
   return (
-      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+      <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
         <AuthCard/>
-      </div>
+      </Box>
   );
 }

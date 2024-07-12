@@ -1,3 +1,4 @@
+'use client';
 import {Box, IconButton, InputAdornment} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -7,6 +8,8 @@ import VisibilityIcon from '@mui/icons-material/visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export const LoginForm = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => {
@@ -32,6 +35,8 @@ export const LoginForm = () => {
                     fullWidth
                     margin="normal"
                     placeholder="example@mail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                     label="Password"
@@ -39,6 +44,8 @@ export const LoginForm = () => {
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">

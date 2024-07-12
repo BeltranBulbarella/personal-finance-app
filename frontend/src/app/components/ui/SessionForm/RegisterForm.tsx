@@ -1,10 +1,15 @@
+'use client';
 import {Box} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import React from "react";
+import React, {useState} from "react";
 
 export const RegisterForm = () => {
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     return (
         <Box>
@@ -20,7 +25,18 @@ export const RegisterForm = () => {
                     variant="outlined"
                     fullWidth
                     margin="normal"
-                    placeholder="John Doe"
+                    placeholder="John"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <TextField
+                    label="Surname"
+                    variant="outlined"
+                    fullWidth
+                    margin="normal"
+                    placeholder="Doe"
+                    value={surname}
+                    onChange={(e) => setSurname(e.target.value)}
                 />
                 <TextField
                     label="Email"
@@ -28,6 +44,8 @@ export const RegisterForm = () => {
                     fullWidth
                     margin="normal"
                     placeholder="example@mail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                     label="Password"
@@ -35,6 +53,8 @@ export const RegisterForm = () => {
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <Button
                     type="submit"
