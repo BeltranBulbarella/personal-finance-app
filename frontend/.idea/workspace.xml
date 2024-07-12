@@ -5,69 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="refactored front. Added login and register UI">
-      <change afterPath="$PROJECT_DIR$/../backend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/prisma/migrations/20240607203010_add_user/migration.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/prisma/migrations/migration_lock.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/prisma/schema.prisma" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/app.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/controllers/userController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/routes/userRoutes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/next.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/common/Card/AuthCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/common/Toast/Toast.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/common/ToggleButtons/ToggleButtons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/page.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/styles/globals.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/styles/themes/lightTheme.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/default.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/default.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/edge.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/edge.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/edge.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/edge.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index-browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index-browser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/wasm.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/wasm.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/wasm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/wasm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/themes/lightTheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/themes/lightTheme.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,11 +70,23 @@
       <workItem from="1720734169673" duration="1754000" />
       <workItem from="1720735929206" duration="41000" />
       <workItem from="1720735971951" duration="6916000" />
+      <workItem from="1720756760390" duration="315000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactored front. Added login and register UI" />

@@ -43,7 +43,7 @@ export const RegisterForm = () => {
                     color="primary"
                     sx={{mt: 2}}
                 >
-                    Sign In
+                    Register
                 </Button>
             </form>
         </Box>

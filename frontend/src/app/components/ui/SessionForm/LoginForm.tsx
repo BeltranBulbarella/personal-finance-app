@@ -1,10 +1,21 @@
-import {Box} from "@mui/material";
+import {Box, IconButton, InputAdornment} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import React from "react";
+import React, {useState} from "react";
+import VisibilityIcon from '@mui/icons-material/visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export const LoginForm = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleMouseDownPassword = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+    };
 
     return (
         <Box>
@@ -24,10 +35,25 @@ export const LoginForm = () => {
                 />
                 <TextField
                     label="Password"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     variant="outlined"
                     fullWidth
                     margin="normal"
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                    sx={{marginRight: '1px'}}
+                                >
+                                    {showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+                                </IconButton>
+                            </InputAdornment>
+                        )
+                    }}
                 />
                 <Button
                     size="small"

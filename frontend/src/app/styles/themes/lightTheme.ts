@@ -54,14 +54,14 @@ const lightTheme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: {
-                    backgroundColor: '#000', // Black background
-                    color: '#fff', // White text
-                    borderRadius: '12px', // Rounded corners
-                    padding: '10px 20px', // Adjust padding as needed
-                    textTransform: 'none', // Remove uppercase text transformation
-                    fontSize: '16px', // Set font size
+                    backgroundColor: '#000',
+                    color: '#fff',
+                    borderRadius: '12px',
+                    padding: '10px 20px',
+                    textTransform: 'none',
+                    fontSize: '16px',
                     '&:hover': {
-                        backgroundColor: '#333', // Darker shade on hover
+                        backgroundColor: '#333',
                     }
                 }
             }
