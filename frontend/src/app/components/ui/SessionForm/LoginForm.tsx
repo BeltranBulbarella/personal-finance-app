@@ -6,8 +6,11 @@ import Button from "@mui/material/Button";
 import React, {useState} from "react";
 import VisibilityIcon from '@mui/icons-material/visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import {useLogin} from "@/app/hooks/useAuth";
+import {ErrorToast} from "@/app/components/common/Toast/Toast";
 
 export const LoginForm = () => {
+    const login = useLogin();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -20,6 +23,15 @@ export const LoginForm = () => {
         event.preventDefault();
     };
 
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        try {
+            await login(email, password)
+        } catch (error) {
+            ErrorToast('Failed to login');
+        }
+    };
+
     return (
         <Box>
             <Typography variant="h4" component="div" sx={{textAlign: 'left', mb: 2}}>
@@ -28,7 +40,7 @@ export const LoginForm = () => {
             <Typography variant="body1" component="div" sx={{textAlign: 'left', mb: 2}}>
                 Enter your email and password to access your account
             </Typography>
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <TextField
                     label="Email"
                     variant="outlined"

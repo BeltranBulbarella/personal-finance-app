@@ -5,6 +5,7 @@ import {Flip, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {ThemeProvider} from '@mui/material/styles';
 import lightTheme from "@/app/styles/themes/lightTheme";
+import {Box} from "@mui/material";
 
 const inter = Inter({subsets: ['latin']});
 
@@ -18,21 +19,57 @@ export default function RootLayout({children}: { children: ReactNode }) {
         <html suppressHydrationWarning lang='en'>
         <body className={inter.className}>
         <ThemeProvider theme={lightTheme}>
-            <ToastContainer
-                style={{marginTop: '60px'}}
-                autoClose={3000}
-                limit={3}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme='colored'
-                transition={Flip}
-            />
-            {children}
+            {/* Top Bar */}
+            <Box sx={{
+                width: '100%',
+                height: '60px',
+                backgroundColor: 'black',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                zIndex: 1100,
+            }}>
+                Invest
+            </Box>
+
+            <Box sx={{ paddingTop: '60px', paddingBottom: '60px', minHeight: '100vh' }}>
+                <ToastContainer
+                    style={{ marginTop: '60px' }}
+                    autoClose={3000}
+                    limit={3}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme='colored'
+                    transition={Flip}
+                />
+                {children}
+            </Box>
+
+            {/* Bottom Bar */}
+            <Box sx={{
+                width: '100%',
+                height: '60px',
+                backgroundColor: 'black',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                zIndex: 1100,
+            }}>
+                © 2024 Invest. All rights reserved.
+            </Box>
         </ThemeProvider>
         </body>
         </html>
