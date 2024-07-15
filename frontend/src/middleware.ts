@@ -3,14 +3,13 @@ import {NextResponse} from 'next/server';
 
 export function middleware(request: NextRequest) {
   const {pathname} = request.nextUrl;
-  // // Manually exclude paths
+
   const excludedPaths = ['/'];
   if (excludedPaths.includes(pathname)) {
     return NextResponse.next();
   }
 
   const token = request.cookies.get('auth_token');
-  console.log('token:', token);
   if (!token) {
     const url = request.nextUrl.clone();
     url.pathname = '/';
@@ -20,7 +19,6 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Apply this middleware to all routes
 export const config = {
   matcher: [
     {

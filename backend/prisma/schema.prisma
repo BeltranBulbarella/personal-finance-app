@@ -14,11 +14,43 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  surname   String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int           @id @default(autoincrement())
+  name        String
+  surname     String
+  email       String        @unique
+  password    String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  Transaction Transaction[]
+  Holding     Holding[]
+}
+
+model Asset {
+  id           Int           @id @default(autoincrement())
+  type         String // 'stock' or 'crypto'
+  symbol       String       @unique
+  name         String
+  transactions Transaction[]
+  holdings     Holding[]
+}
+
+model Transaction {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  assetId         Int
+  quantity        Float
+  pricePerUnit    Float
+  transactionType String // 'buy' or 'sell'
+  transactionDate DateTime
+  user            User     @relation(fields: [userId], references: [id])
+  asset           Asset    @relation(fields: [assetId], references: [id])
+}
+
+model Holding {
+  id       Int   @id @default(autoincrement())
+  userId   Int
+  assetId  Int
+  quantity Float
+  user     User  @relation(fields: [userId], references: [id])
+  asset    Asset @relation(fields: [assetId], references: [id])
 }
