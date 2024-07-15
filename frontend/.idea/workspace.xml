@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="fixed session styles">
-      <change afterPath="$PROJECT_DIR$/src/app/(authRoutes)/dashboard/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/store/authStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/types/authTypes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/axiosInstance.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/dist/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/dist/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/hooks/sessionHooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" afterDir="false" />
+    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="added session components">
+      <change afterPath="$PROJECT_DIR$/src/app/components/common/Bar/Bar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/common/Theme/ThemeIcon.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/common/Theme/ThemeProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/store/themeStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,13 +41,19 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -64,6 +65,8 @@
       <recent name="$PROJECT_DIR$/src/app/components/common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/components/common" />
+      <recent name="$PROJECT_DIR$/src/app/components/Theme" />
       <recent name="$PROJECT_DIR$/src/app/(authRoutes)" />
       <recent name="$PROJECT_DIR$/src/app/styles" />
     </key>
@@ -88,7 +91,7 @@
       <workItem from="1720735929206" duration="41000" />
       <workItem from="1720735971951" duration="6916000" />
       <workItem from="1720756760390" duration="3402000" />
-      <workItem from="1720796052200" duration="5236000" />
+      <workItem from="1720796052200" duration="9490000" />
     </task>
     <task id="LOCAL-00001" summary="fixed session styles">
       <option name="closed" value="true" />
@@ -98,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720757210443</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added session components">
+      <option name="closed" value="true" />
+      <created>1720994167218</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720994167218</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactored front. Added login and register UI" />
     <MESSAGE value="fixed session styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed session styles" />
+    <MESSAGE value="added session components" />
+    <option name="LAST_COMMIT_MESSAGE" value="added session components" />
   </component>
 </project>
