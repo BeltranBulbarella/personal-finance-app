@@ -24,11 +24,17 @@ export class UsersService {
     const { email, password } = loginUserDto;
     const user = await this.validateUser(email, password);
     if (!user) {
-      throw new Error('Invalid credentials'); // Use appropriate error handling like throwing HTTP exceptions
+      throw new UnauthorizedException('Invalid credentials');
     }
     const payload = { username: user.email, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
+      user: {
+        id: user.id,
+        name: user.name,
+        surname: user.surname,
+        email: user.email
+      }
     };
   }
 

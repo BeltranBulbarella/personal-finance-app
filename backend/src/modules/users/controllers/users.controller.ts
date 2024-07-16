@@ -9,16 +9,22 @@ import { Response } from 'express';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Body() loginUserDto: LoginUserDto, @Res() res: Response) {
     const loginResult = await this.usersService.login(loginUserDto);
     res.cookie('auth_token', loginResult.access_token, {
-      httpOnly: true,
-      // secure: process.env.NODE_ENV === 'production', // ensure cookies are sent over HTTPS on prod
+      httpOnly: true, // Important: prevents client-side JS from accessing the cookie
+      // secure: process.env.NODE_ENV === 'production', // Important: cookies sent over HTTPS only
+      sameSite: 'strict',
+      path: '/',
     });
-    return res.send({ success: true });
+    return res.json({
+      success: true,
+      access_token: loginResult.access_token,
+      user: loginResult.user
+    });
   }
+
 
   @Post('register')
   async register(@Body() registerUserDto: RegisterUserDto) {

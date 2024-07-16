@@ -3,6 +3,7 @@ import useAuthStore from '../store/authStore';
 import {ErrorToast, SuccessToast} from '@/app/components/common/Toast/Toast';
 import axiosInstance from '@/utils/axiosInstance';
 import {useRouter} from 'next/navigation';
+import Cookies from 'js-cookie';
 
 const isAxiosError = (error: any): error is AxiosError => {
   return error.isAxiosError === true;
@@ -21,6 +22,7 @@ export const useLogin = () => {
       });
       setToken(response.data.access_token);
       setUser(response.data.user);
+      Cookies.set('auth_token', response.data.access_token, {expires: 1});
       router.push('/dashboard');
       SuccessToast('Login successful');
     } catch (error) {
