@@ -47,10 +47,11 @@ model Transaction {
 }
 
 model Holding {
-  id       Int   @id @default(autoincrement())
-  userId   Int
-  assetId  Int
-  quantity Float
-  user     User  @relation(fields: [userId], references: [id])
-  asset    Asset @relation(fields: [assetId], references: [id])
+  id             Int     @id @default(autoincrement())
+  userId         Int
+  assetId        Int
+  quantity       Float
+  averageBuyPrice Float  @default(0)
+  user           User    @relation(fields: [userId], references: [id])
+  asset          Asset   @relation(fields: [assetId], references: [id])
 }

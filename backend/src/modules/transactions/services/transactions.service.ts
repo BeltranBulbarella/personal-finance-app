@@ -23,7 +23,6 @@ export class TransactionService {
     const transaction = await this.prisma.transaction.findUnique({ where: { id } });
     if (transaction) {
       await this.prisma.transaction.delete({ where: { id } });
-      // Adjust holdings accordingly, potentially needing different logic
       await this.adjustHoldingAfterTransactionDeletion(transaction);
     }
   }
@@ -42,20 +41,21 @@ export class TransactionService {
     });
 
     if (existingHolding) {
-      const newQuantity = transaction.transactionType === 'buy'
-        ? existingHolding.quantity + transaction.quantity
-        : existingHolding.quantity - transaction.quantity;
+      let newQuantity = existingHolding.quantity + (transaction.transactionType === 'buy' ? transaction.quantity : -transaction.quantity);
+      let totalCost = existingHolding.averageBuyPrice * existingHolding.quantity + (transaction.transactionType === 'buy' ? transaction.quantity * transaction.pricePerUnit : 0);
+      let newAverageBuyPrice = newQuantity > 0 ? totalCost / newQuantity : 0;
 
       return this.prisma.holding.update({
         where: { id: existingHolding.id },
-        data: { quantity: newQuantity }
+        data: { quantity: newQuantity, averageBuyPrice: newAverageBuyPrice }
       });
     } else if (transaction.transactionType === 'buy') {
       return this.prisma.holding.create({
         data: {
           userId: transaction.userId,
           assetId: transaction.assetId,
-          quantity: transaction.quantity
+          quantity: transaction.quantity,
+          averageBuyPrice: transaction.pricePerUnit
         }
       });
     }
@@ -69,27 +69,22 @@ export class TransactionService {
       }
     });
 
-    if (!existingHolding) {
-      // If no existing holding, no adjustment needed
-      return null;
-    }
+    if (existingHolding) {
+      let newQuantity = existingHolding.quantity - transaction.quantity;
 
-    // Calculate new quantity based on transaction type
-    const adjustedQuantity = transaction.transactionType === 'buy'
-      ? existingHolding.quantity - transaction.quantity
-      : existingHolding.quantity + transaction.quantity;
+      // Recalculate average buy price if it's a buy transaction
+      if (transaction.transactionType === 'buy' && newQuantity > 0) {
+        let totalSpent = (existingHolding.averageBuyPrice * existingHolding.quantity) - (transaction.pricePerUnit * transaction.quantity);
+        let newAverageBuyPrice = totalSpent / newQuantity;
 
-    if (adjustedQuantity <= 0) {
-      // If adjusted quantity drops to zero or below, remove the holding
-      await this.prisma.holding.delete({
-        where: { id: existingHolding.id }
-      });
-    } else {
-      // Otherwise, update the holding with the new quantity
-      await this.prisma.holding.update({
-        where: { id: existingHolding.id },
-        data: { quantity: adjustedQuantity }
-      });
+        return this.prisma.holding.update({
+          where: { id: existingHolding.id },
+          data: { quantity: newQuantity, averageBuyPrice: newAverageBuyPrice }
+        });
+      } else {
+        // If no quantity remains or it's a sell transaction affecting quantity only
+        return this.prisma.holding.delete({ where: { id: existingHolding.id } });
+      }
     }
   }
 }
