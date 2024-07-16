@@ -21,8 +21,25 @@ export class HoldingService {
     return this.prisma.holding.delete({ where: { id } });
   }
 
-  async findAllHoldings() {
-    return this.prisma.holding.findMany();
+  async findAllHoldings(type?: string) {
+    if (type) {
+      return this.prisma.holding.findMany({
+        where: {
+          asset: {
+            type: type,
+          },
+        },
+        include: {
+          asset: true,
+        },
+      });
+    } else {
+      return this.prisma.holding.findMany({
+        include: {
+          asset: true,
+        },
+      });
+    }
   }
 
   async findOneHolding(id: number) {

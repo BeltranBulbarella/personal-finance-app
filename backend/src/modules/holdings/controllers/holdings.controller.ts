@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Put, Delete, Query } from '@nestjs/common';
 import { CreateHoldingDto } from '../dto/holding.dto';
 import { HoldingService } from '../services/holdings.service';
 
@@ -12,8 +12,8 @@ export class HoldingsController {
   }
 
   @Get()
-  findAll() {
-    return this.holdingService.findAllHoldings();
+  findAll(@Query('type') type?: string) {
+    return this.holdingService.findAllHoldings(type);
   }
 
   @Get(':id')
