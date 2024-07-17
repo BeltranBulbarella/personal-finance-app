@@ -22,7 +22,7 @@ html, body {
 /* Style links with a different color and remove underlines */
 a {
     text-decoration: none;
-    color: #007BFF;
+    color: inherit;
 }
 
 /* Create a responsive, centered container */

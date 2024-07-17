@@ -4,10 +4,8 @@ import type {ReactNode} from 'react';
 import {Flip, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Box} from '@mui/material';
-import {Bar} from '@/app/components/common/Bar/Bar';
-import {Savings, Toll} from '@mui/icons-material';
 import {ThemeProvider} from '@/app/components/common/Theme/ThemeProvider';
-import {ThemeIcon} from '@/app/components/common/Theme/ThemeIcon';
+import {Layout} from '@/app/components/ui/Layout/Layout';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -35,48 +33,17 @@ export default function RootLayout({children}: {children: ReactNode}) {
             theme='colored'
             transition={Flip}
           />
-          <Bar
-            position='top'
-            items={[
-              {
-                content: (
-                  <>
-                    <Toll sx={{marginRight: '10px'}} />
-                    Invest
-                  </>
-                ),
-                textAlign: 'left',
-              },
-              {content: <ThemeIcon />, textAlign: 'right'},
-            ]}
-          />
-          <Box
-            sx={{
-              marginTop: '80px',
-              marginBottom: '70px',
-              paddingX: {xs: 2, sm: 3, md: 4, lg: 5},
-            }}
-          >
-            {children}
-          </Box>
-          <Bar
-            position='bottom'
-            items={[
-              {
-                content: (
-                  <>
-                    <Savings sx={{marginRight: '10px'}} />
-                    Invest
-                  </>
-                ),
-                textAlign: 'left',
-              },
-              {
-                content: '© 2024 Invest. All rights reserved.',
-                textAlign: 'right',
-              },
-            ]}
-          />
+          <Layout>
+            <Box
+              sx={{
+                marginTop: '80px',
+                marginBottom: '70px',
+                paddingX: {xs: 2, sm: 3, md: 4, lg: 5},
+              }}
+            >
+              {children}
+            </Box>
+          </Layout>
         </ThemeProvider>
       </body>
     </html>
