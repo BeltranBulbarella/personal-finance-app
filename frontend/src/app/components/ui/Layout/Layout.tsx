@@ -30,7 +30,7 @@ export const Layout = ({children}: {children: any}) => {
         ]}
       />
 
-      <Box sx={{display: 'flex'}}>
+      <Box>
         <Sidebar open={open} setOpen={setOpen} />
         <Box
           component='main'

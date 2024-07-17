@@ -13,7 +13,7 @@ export class HoldingService {
   async updateHolding(id: number, dto: UpdateHoldingDto) {
     return this.prisma.holding.update({
       where: { id },
-      data: dto
+      data: dto,
     });
   }
 

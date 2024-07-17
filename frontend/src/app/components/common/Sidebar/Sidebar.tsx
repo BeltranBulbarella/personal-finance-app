@@ -34,7 +34,7 @@ const Sidebar = ({
         '& .MuiDrawer-paper': {
           position: 'fixed',
           top: '60px',
-          height: `calc(100% - 60px)`,
+          height: `calc(100% - 120px)`,
           width: open ? drawerWidth : miniWidth,
           overflowX: 'hidden',
           transition: 'width 225ms cubic-bezier(0, 0, 0.2, 1)',

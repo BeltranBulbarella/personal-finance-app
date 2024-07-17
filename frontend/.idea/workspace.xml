@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="added session components">
-      <change afterPath="$PROJECT_DIR$/src/app/components/common/Bar/Bar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/common/Theme/ThemeIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/common/Theme/ThemeProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/store/themeStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/globals.css" afterDir="false" />
+    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: theme components">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,27 +33,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/src/app/(authRoutes)/crypto&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/(authRoutes)/crypto" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/app/components/common" />
@@ -91,7 +85,8 @@
       <workItem from="1720735929206" duration="41000" />
       <workItem from="1720735971951" duration="6916000" />
       <workItem from="1720756760390" duration="3402000" />
-      <workItem from="1720796052200" duration="9490000" />
+      <workItem from="1720796052200" duration="30602000" />
+      <workItem from="1721246289880" duration="38000" />
     </task>
     <task id="LOCAL-00001" summary="fixed session styles">
       <option name="closed" value="true" />
@@ -109,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720994167218</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: theme components">
+      <option name="closed" value="true" />
+      <created>1721041376693</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721041376693</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +133,7 @@
     <MESSAGE value="refactored front. Added login and register UI" />
     <MESSAGE value="fixed session styles" />
     <MESSAGE value="added session components" />
-    <option name="LAST_COMMIT_MESSAGE" value="added session components" />
+    <MESSAGE value="feat: theme components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: theme components" />
   </component>
 </project>

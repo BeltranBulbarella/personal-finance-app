@@ -22,20 +22,9 @@ export const useHoldings = () => {
     try {
       if (useHoldingsStore.getState().loading) return;
       setLoading(true);
-      const response = await axiosInstance.get('/holdings');
-      setHoldings(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error('Fetching holdings error:', error);
-      setLoading(false);
-    }
-  };
 
-  const fetchCryptoHoldings = async () => {
-    try {
-      if (useHoldingsStore.getState().loading) return;
-      setLoading(true);
-      const response = await axiosInstance.get('/holdings?type=crypto');
+      const url = `/holdings`;
+      const response = await axiosInstance.get(url);
       setHoldings(response.data);
       setLoading(false);
     } catch (error) {
@@ -79,7 +68,6 @@ export const useHoldings = () => {
 
   return {
     fetchHoldings,
-    fetchCryptoHoldings,
     createHolding,
     deleteHolding,
     updateHoldingData,

@@ -1,11 +1,11 @@
 import {Inter} from 'next/font/google';
 import '../app/styles/globals.css';
 import type {ReactNode} from 'react';
-import {Flip, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Box} from '@mui/material';
 import {ThemeProvider} from '@/app/components/common/Theme/ThemeProvider';
-import {Layout} from '@/app/components/ui/Layout/Layout';
+import {AuthLayout} from '@/app/components/ui/Layout/AuthLayout';
+import {Flip, ToastContainer} from 'react-toastify';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -33,7 +33,7 @@ export default function RootLayout({children}: {children: ReactNode}) {
             theme='colored'
             transition={Flip}
           />
-          <Layout>
+          <AuthLayout>
             <Box
               sx={{
                 marginTop: '80px',
@@ -43,7 +43,7 @@ export default function RootLayout({children}: {children: ReactNode}) {
             >
               {children}
             </Box>
-          </Layout>
+          </AuthLayout>
         </ThemeProvider>
       </body>
     </html>

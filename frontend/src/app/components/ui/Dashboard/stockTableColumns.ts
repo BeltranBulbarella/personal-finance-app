@@ -1,4 +1,4 @@
-export const cryptoTableColumns = [
+export const stockTableColumns = [
   {
     id: 'symbol',
     label: 'Symbol',
