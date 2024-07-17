@@ -1,40 +1,58 @@
 'use client';
-import {AdvancedRealTimeChart} from 'react-ts-tradingview-widgets';
+import React, {useEffect} from 'react';
 import {Box} from '@mui/material';
 import CommonTable from '@/app/components/common/Table/CommonTable';
-
-const columns = [
-  {id: 'name', label: 'Crypto', minWidth: 170},
-  {id: 'quantity', label: 'Quantity', minWidth: 100},
-  {
-    id: 'currentPrice',
-    label: 'Current Price',
-    minWidth: 100,
-    format: (value: any) => `$${value.toFixed(2)}`,
-  },
-  {
-    id: 'winnings',
-    label: 'Winnings',
-    minWidth: 100,
-    format: (value: any) => `$${value.toFixed(2)}`,
-  },
-];
-
-const data = [
-  {id: 1, name: 'Bitcoin', quantity: 0.5, currentPrice: 50000, winnings: 500},
-  // More cryptocurrencies...
-];
+import {useHoldings} from '@/app/hooks/useHoldings';
+import {cryptoTableColumns} from '@/app/components/ui/Crypto/cryptoTableColumns';
+import useCryptoStore from '@/app/store/cryptoStore';
+import {useHoldingsStore} from '@/app/store/holdingsStore';
+import {AdvancedRealTimeChart} from 'react-ts-tradingview-widgets';
 
 export const CryptoDashboard = () => {
+  const {fetchCryptoHoldings} = useHoldings();
+  const {holdings, loading: holdingsLoading} = useHoldingsStore();
+  const {fetchPrices, prices} = useCryptoStore();
+
+  useEffect(() => {
+    if (!holdings.length) {
+      fetchCryptoHoldings();
+    } else {
+      const symbols = holdings.map((holding) => holding.asset.symbol);
+      fetchPrices(symbols);
+    }
+  }, [holdings]);
+
+  const enhancedHoldings = holdings.map((holding) => ({
+    ...holding,
+    currentPrice: prices[holding.asset.symbol] || 0,
+    winnings:
+      ((prices[holding.asset.symbol] || 0) - holding.averageBuyPrice) *
+      holding.quantity,
+  }));
+
+  if (holdingsLoading) return <Box>Loading...</Box>;
+
   return (
     <Box>
+      <h1>Crypto Dashboard</h1>
       <Box>
-        <h1>Crypto</h1>
-      </Box>
-      {/*<AdvancedRealTimeChart autosize />*/}
-      <Box>
-        <CommonTable columns={columns} data={data} />
+        <Box style={{height: '500px', width: '100%'}}>
+          <AdvancedRealTimeChart symbol='BTCUSDT' theme='dark' autosize />
+        </Box>
+        <Box
+          sx={{
+            marginTop: '40px',
+          }}
+        >
+          <CommonTable
+            loading={holdingsLoading}
+            columns={cryptoTableColumns}
+            data={enhancedHoldings}
+          />
+        </Box>
       </Box>
     </Box>
   );
 };
+
+export default CryptoDashboard;

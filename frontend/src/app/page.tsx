@@ -9,6 +9,7 @@ export default function Page() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%',
+        marginTop: '20%',
       }}
     >
       <AuthCard />

@@ -21,6 +21,20 @@ export default function RootLayout({children}: {children: ReactNode}) {
     <html suppressHydrationWarning lang='en'>
       <body className={inter.className}>
         <ThemeProvider>
+          <ToastContainer
+            style={{marginTop: '60px'}}
+            autoClose={3000}
+            limit={3}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='colored'
+            transition={Flip}
+          />
           <Bar
             position='top'
             items={[
@@ -36,21 +50,13 @@ export default function RootLayout({children}: {children: ReactNode}) {
               {content: <ThemeIcon />, textAlign: 'right'},
             ]}
           />
-          <Box>
-            <ToastContainer
-              style={{marginTop: '60px'}}
-              autoClose={3000}
-              limit={3}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme='colored'
-              transition={Flip}
-            />
+          <Box
+            sx={{
+              marginTop: '80px',
+              marginBottom: '70px',
+              paddingX: {xs: 2, sm: 3, md: 4, lg: 5},
+            }}
+          >
             {children}
           </Box>
           <Bar

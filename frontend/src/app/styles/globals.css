@@ -1,9 +1,8 @@
 /* Reset some default styles and provide a clean slate */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*box-sizing: border-box;*/
 }
 
 /* Apply a simple, elegant font to the entire page */
@@ -13,11 +12,11 @@ body {
 
 /* Add a subtle background color and center content */
 html, body {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+    /*height: 100%;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    background-color: #e5e3e3;
 }
 
 /* Style links with a different color and remove underlines */
@@ -28,12 +27,12 @@ a {
 
 /* Create a responsive, centered container */
 •container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    /*max-width: 800px;*/
+    /*margin: 0 auto;*/
+    /*padding: 20px;*/
+    /*background-color: #fff;*/
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+    /*border-radius: 5px;*/
 }
 
 /* Add responsive design for mobile devices */
