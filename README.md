@@ -5,7 +5,7 @@ This repository contains the code for a comprehensive investment management syst
 ## Technology Stack
 
 ### Frontend
-- **Framework**: React (with TypeScript)
+- **Framework**: Next13.js (with TypeScript)
 - **Libraries**:
   - Material-UI for UI components with built-in light and dark themes
   - Recharts for interactive and responsive charts
