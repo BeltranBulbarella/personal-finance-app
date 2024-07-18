@@ -15,8 +15,14 @@ interface UpdateHoldingDto {
 }
 
 export const useHoldings = () => {
-  const {setHoldings, addHolding, removeHolding, updateHolding, setLoading} =
-    useHoldingsStore();
+  const {
+    setCashBalance,
+    setHoldings,
+    addHolding,
+    removeHolding,
+    updateHolding,
+    setLoading,
+  } = useHoldingsStore();
 
   const fetchHoldings = async () => {
     try {
@@ -96,6 +102,7 @@ export const useHoldings = () => {
   const getCashBalance = async (userId: number) => {
     try {
       const response = await axiosInstance.get(`/holdings/get-cash/${userId}`);
+      setCashBalance(response.data);
       SuccessToast('Cash balance retrieved successfully');
       return response.data;
     } catch (error) {

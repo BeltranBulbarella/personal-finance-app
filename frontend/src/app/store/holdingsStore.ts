@@ -16,6 +16,8 @@ interface Holding {
 
 interface HoldingsState {
   holdings: Holding[];
+  cashBalance: number;
+  setCashBalance: (cashBalance: number) => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
   setHoldings: (holdings: Holding[]) => void;
@@ -26,6 +28,8 @@ interface HoldingsState {
 
 export const useHoldingsStore = create<HoldingsState>((set, get) => ({
   holdings: [],
+  cashBalance: 0,
+  setCashBalance: (cashBalance) => set({cashBalance}),
   loading: false,
   setLoading: (loading) => set({loading}),
   setHoldings: (holdings) => set({holdings}),

@@ -1,13 +1,20 @@
 'use client';
 import {Box} from '@mui/material';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Button from '@mui/material/Button';
 import useAuthStore from '@/app/store/authStore';
+import {useHoldingsStore} from '@/app/store/holdingsStore';
+import {useHoldings} from '@/app/hooks/useHoldings';
 
 export const Dashboard = () => {
   const {user} = useAuthStore();
-  console.log('u', user);
+  const {cashBalance} = useHoldingsStore();
+  console.log('u', user, 'h', cashBalance);
+  const {getCashBalance} = useHoldings();
 
+  useEffect(() => {
+    getCashBalance(1);
+  }, []);
   return (
     <>
       <Box>
