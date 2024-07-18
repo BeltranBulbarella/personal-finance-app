@@ -14,44 +14,45 @@ datasource db {
 }
 
 model User {
-  id          Int           @id @default(autoincrement())
-  name        String
-  surname     String
-  email       String        @unique
-  password    String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  Transaction Transaction[]
-  Holding     Holding[]
+  id           Int           @id @default(autoincrement())
+  name         String
+  surname      String
+  email        String        @unique
+  password     String
+  cashBalance  Float         @default(0)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  Transactions Transaction[]
+  Holdings     Holding[]
 }
 
 model Asset {
   id           Int           @id @default(autoincrement())
-  type         String // 'stock' or 'crypto'
-  symbol       String       @unique
+  type         String        // 'stock' or 'crypto'
+  symbol       String        @unique
   name         String
-  transactions Transaction[]
-  holdings     Holding[]
+  Transactions Transaction[]
+  Holdings     Holding[]
 }
 
 model Transaction {
   id              Int      @id @default(autoincrement())
   userId          Int
-  assetId         Int
+  assetId         Int?
   quantity        Float
   pricePerUnit    Float
-  transactionType String // 'buy' or 'sell'
+  transactionType String   // 'buy', 'sell', or 'cash'
   transactionDate DateTime
   user            User     @relation(fields: [userId], references: [id])
-  asset           Asset    @relation(fields: [assetId], references: [id])
+  asset           Asset?   @relation(fields: [assetId], references: [id], onDelete: SetNull)
 }
 
 model Holding {
-  id             Int     @id @default(autoincrement())
-  userId         Int
-  assetId        Int
-  quantity       Float
-  averageBuyPrice Float  @default(0)
-  user           User    @relation(fields: [userId], references: [id])
-  asset          Asset   @relation(fields: [assetId], references: [id])
+  id              Int     @id @default(autoincrement())
+  userId          Int
+  assetId         Int
+  quantity        Float
+  averageBuyPrice Float   @default(0)
+  user            User    @relation(fields: [userId], references: [id])
+  asset           Asset   @relation(fields: [assetId], references: [id])
 }

@@ -8,8 +8,12 @@ const swagger_1 = require("@nestjs/swagger");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors();
-    app.useGlobalPipes(new common_1.ValidationPipe());
-    app.useGlobalPipes(new common_1.ValidationPipe({ whitelist: true }));
+    app.useGlobalPipes(new common_1.ValidationPipe({
+        whitelist: true,
+        transform: true,
+        forbidNonWhitelisted: false,
+        skipMissingProperties: false,
+    }));
     app.useGlobalGuards(new jwt_auth_guard_1.JwtAuthGuard());
     const config = new swagger_1.DocumentBuilder()
         .setTitle('Example API')

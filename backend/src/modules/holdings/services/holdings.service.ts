@@ -1,4 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateHoldingDto, UpdateHoldingDto } from '../dto/holding.dto';
 import { PrismaService } from '../../../services/prisma/prisma.service';
 
@@ -44,5 +48,29 @@ export class HoldingService {
 
   async findOneHolding(id: number) {
     return this.prisma.holding.findUnique({ where: { id } });
+  }
+
+  async adjustCashBalance(userId: number, amount: number) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) throw new NotFoundException('User not found');
+
+    const newBalance = user.cashBalance + amount;
+    if (newBalance < 0)
+      throw new BadRequestException('Insufficient cash balance');
+
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { cashBalance: newBalance },
+    });
+  }
+
+  async getCashBalance(userId: number) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { cashBalance: true },
+    });
+    if (!user) throw new NotFoundException('User not found');
+
+    return user.cashBalance;
   }
 }

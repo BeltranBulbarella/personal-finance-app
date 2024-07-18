@@ -11,7 +11,7 @@ export const CryptoDashboard = () => {
       fetchPrices={useCryptoStore().fetchPrices}
       prices={useCryptoStore().prices}
       tableColumns={cryptoTableColumns}
-      priceSymbolPrefix=''
+      priceSymbolSuffix='USDT'
     />
   );
 };

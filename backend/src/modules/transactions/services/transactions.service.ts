@@ -1,30 +1,65 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../../../services/prisma/prisma.service';
 import { CreateTransactionDto } from '../dto/transaction.dto';
 
 @Injectable()
 export class TransactionService {
-  constructor(private prisma: PrismaService) {
-  }
+  constructor(private prisma: PrismaService) {}
 
   async createTransaction(dto: CreateTransactionDto) {
+    if (!dto.userId) {
+      throw new BadRequestException('User ID must be provided');
+    }
+
+    const user = await this.prisma.user.findUnique({
+      where: { id: dto.userId },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found.');
+    }
+
+    // Check cash balance for buy transactions
+    if (dto.transactionType === 'BUY') {
+      const totalCost = dto.quantity * dto.pricePerUnit;
+      if (user.cashBalance < totalCost) {
+        throw new BadRequestException('Insufficient cash balance.');
+      }
+      // Deduct total cost from user's cash balance
+      await this.prisma.user.update({
+        where: { id: dto.userId },
+        data: { cashBalance: { decrement: totalCost } },
+      });
+    }
+
     const transaction = await this.prisma.transaction.create({ data: dto });
     await this.handleHoldingAfterTransaction(dto);
     return transaction;
   }
 
   async updateTransaction(id: number, dto: CreateTransactionDto) {
-    const transaction = await this.prisma.transaction.update({ where: { id }, data: dto });
+    const transaction = await this.prisma.transaction.update({
+      where: { id },
+      data: dto,
+    });
     await this.handleHoldingAfterTransaction(dto);
     return transaction;
   }
 
   async deleteTransaction(id: number) {
-    const transaction = await this.prisma.transaction.findUnique({ where: { id } });
-    if (transaction) {
-      await this.prisma.transaction.delete({ where: { id } });
-      await this.adjustHoldingAfterTransactionDeletion(transaction);
-    }
+    const transaction = await this.prisma.transaction.findUnique({
+      where: { id },
+    });
+    if (!transaction) throw new NotFoundException('Transaction not found.');
+
+    await this.prisma.transaction.delete({ where: { id } });
+    await this.adjustCashBalanceAndHoldingsAfterTransactionDeletion(
+      transaction,
+    );
   }
 
   async findAllTransactions() {
@@ -37,53 +72,88 @@ export class TransactionService {
 
   async handleHoldingAfterTransaction(transaction: CreateTransactionDto) {
     const existingHolding = await this.prisma.holding.findFirst({
-      where: { userId: transaction.userId, assetId: transaction.assetId }
+      where: { userId: transaction.userId, assetId: transaction.assetId },
     });
 
-    if (existingHolding) {
-      let newQuantity = existingHolding.quantity + (transaction.transactionType === 'buy' ? transaction.quantity : -transaction.quantity);
-      let totalCost = existingHolding.averageBuyPrice * existingHolding.quantity + (transaction.transactionType === 'buy' ? transaction.quantity * transaction.pricePerUnit : 0);
-      let newAverageBuyPrice = newQuantity > 0 ? totalCost / newQuantity : 0;
+    if (transaction.transactionType === 'BUY') {
+      if (existingHolding) {
+        const newQuantity = existingHolding.quantity + transaction.quantity;
+        const totalCost =
+          existingHolding.averageBuyPrice * existingHolding.quantity +
+          transaction.quantity * transaction.pricePerUnit;
+        const newAverageBuyPrice = totalCost / newQuantity;
 
-      return this.prisma.holding.update({
+        await this.prisma.holding.update({
+          where: { id: existingHolding.id },
+          data: { quantity: newQuantity, averageBuyPrice: newAverageBuyPrice },
+        });
+      } else {
+        await this.prisma.holding.create({
+          data: {
+            userId: transaction.userId,
+            assetId: transaction.assetId,
+            quantity: transaction.quantity,
+            averageBuyPrice: transaction.pricePerUnit,
+          },
+        });
+      }
+    } else if (transaction.transactionType === 'SELL') {
+      if (!existingHolding || existingHolding.quantity < transaction.quantity) {
+        throw new BadRequestException('Not enough assets to sell.');
+      }
+      await this.prisma.holding.update({
         where: { id: existingHolding.id },
-        data: { quantity: newQuantity, averageBuyPrice: newAverageBuyPrice }
+        data: { quantity: existingHolding.quantity - transaction.quantity },
       });
-    } else if (transaction.transactionType === 'buy') {
-      return this.prisma.holding.create({
+      // Increase user's cash balance
+      await this.prisma.user.update({
+        where: { id: transaction.userId },
         data: {
-          userId: transaction.userId,
-          assetId: transaction.assetId,
-          quantity: transaction.quantity,
-          averageBuyPrice: transaction.pricePerUnit
-        }
+          cashBalance: {
+            increment: transaction.quantity * transaction.pricePerUnit,
+          },
+        },
       });
     }
   }
 
-  async adjustHoldingAfterTransactionDeletion(transaction: CreateTransactionDto) {
+  async adjustCashBalanceAndHoldingsAfterTransactionDeletion(
+    transaction: CreateTransactionDto,
+  ) {
+    if (transaction.transactionType === 'BUY') {
+      // Reverse the cash used for the purchase
+      await this.prisma.user.update({
+        where: { id: transaction.userId },
+        data: {
+          cashBalance: {
+            increment: transaction.quantity * transaction.pricePerUnit,
+          },
+        },
+      });
+    } else if (transaction.transactionType === 'SELL') {
+      // Deduct cash received from the sale
+      await this.prisma.user.update({
+        where: { id: transaction.userId },
+        data: {
+          cashBalance: {
+            decrement: transaction.quantity * transaction.pricePerUnit,
+          },
+        },
+      });
+    }
+    // Update or delete the holding accordingly
     const existingHolding = await this.prisma.holding.findFirst({
-      where: {
-        userId: transaction.userId,
-        assetId: transaction.assetId
-      }
+      where: { userId: transaction.userId, assetId: transaction.assetId },
     });
-
     if (existingHolding) {
-      let newQuantity = existingHolding.quantity - transaction.quantity;
-
-      // Recalculate average buy price if it's a buy transaction
-      if (transaction.transactionType === 'buy' && newQuantity > 0) {
-        let totalSpent = (existingHolding.averageBuyPrice * existingHolding.quantity) - (transaction.pricePerUnit * transaction.quantity);
-        let newAverageBuyPrice = totalSpent / newQuantity;
-
-        return this.prisma.holding.update({
-          where: { id: existingHolding.id },
-          data: { quantity: newQuantity, averageBuyPrice: newAverageBuyPrice }
-        });
+      const newQuantity = existingHolding.quantity - transaction.quantity;
+      if (newQuantity <= 0) {
+        await this.prisma.holding.delete({ where: { id: existingHolding.id } });
       } else {
-        // If no quantity remains or it's a sell transaction affecting quantity only
-        return this.prisma.holding.delete({ where: { id: existingHolding.id } });
+        await this.prisma.holding.update({
+          where: { id: existingHolding.id },
+          data: { quantity: newQuantity },
+        });
       }
     }
   }

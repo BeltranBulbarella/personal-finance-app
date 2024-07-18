@@ -66,4 +66,29 @@ export class HoldingsController {
   remove(@Param('id') id: number) {
     return this.holdingService.deleteHolding(id);
   }
+
+  @Post('add-cash')
+  @ApiOperation({ summary: 'Add cash to user balance' })
+  @ApiResponse({ status: 200, description: 'Cash added successfully' })
+  addCash(@Body() { userId, amount }: { userId: number; amount: number }) {
+    return this.holdingService.adjustCashBalance(userId, amount);
+  }
+
+  @Post('remove-cash')
+  @ApiOperation({ summary: 'Remove cash from user balance' })
+  @ApiResponse({ status: 200, description: 'Cash removed successfully' })
+  removeCash(@Body() { userId, amount }: { userId: number; amount: number }) {
+    return this.holdingService.adjustCashBalance(userId, -amount);
+  }
+
+  @Get('get-cash/:userId')
+  @ApiOperation({ summary: 'Get cash balance of a user' })
+  @ApiParam({ name: 'userId', description: 'User ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Cash balance retrieved successfully',
+  })
+  getCash(@Param('userId') userId: string) {
+    return this.holdingService.getCashBalance(parseInt(userId));
+  }
 }

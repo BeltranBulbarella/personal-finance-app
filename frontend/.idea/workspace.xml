@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: theme components">
+      <change afterPath="$PROJECT_DIR$/../backend/prisma/migrations/20240718200627_init_cash_balance/migration.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/edge.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/edge.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index-browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index-browser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/wasm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/node_modules/.prisma/client/wasm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/modules/transactions/services/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/modules/transactions/services/transactions.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/Dashboards/AssetTypeDashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Dashboards/AssetTypeDashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/Crypto/CryptoDashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Crypto/CryptoDashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +47,7 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/src/app/(authRoutes)/crypto&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/src/app/store&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -53,10 +63,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app/(authRoutes)/crypto" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/app/components/common" />
+      <recent name="$PROJECT_DIR$/src/app/store" />
+      <recent name="$PROJECT_DIR$/src/app/components/common/Modal" />
+      <recent name="$PROJECT_DIR$/src/app/components/ui/Dashboard" />
+      <recent name="$PROJECT_DIR$/src/app/components/ui/Stocks" />
+      <recent name="$PROJECT_DIR$/src/app/(authRoutes)" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/components/common" />
@@ -87,6 +98,8 @@
       <workItem from="1720756760390" duration="3402000" />
       <workItem from="1720796052200" duration="30602000" />
       <workItem from="1721246289880" duration="38000" />
+      <workItem from="1721246331325" duration="13096000" />
+      <workItem from="1721329434386" duration="1866000" />
     </task>
     <task id="LOCAL-00001" summary="fixed session styles">
       <option name="closed" value="true" />

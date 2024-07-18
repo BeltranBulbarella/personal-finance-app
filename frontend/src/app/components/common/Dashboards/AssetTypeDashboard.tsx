@@ -16,6 +16,7 @@ interface AssetTypeDashboardProps {
   prices: Record<string, number | null>;
   tableColumns: any;
   priceSymbolPrefix?: string;
+  priceSymbolSuffix?: string;
 }
 
 export const AssetTypeDashboard = ({
@@ -24,6 +25,7 @@ export const AssetTypeDashboard = ({
   prices,
   tableColumns,
   priceSymbolPrefix = '',
+  priceSymbolSuffix = '',
 }: AssetTypeDashboardProps) => {
   const {fetchHoldings} = useHoldings();
   const {holdings, loading: holdingsLoading} = useHoldingsStore();
@@ -44,7 +46,11 @@ export const AssetTypeDashboard = ({
     if (!holdingsLoading && prices) {
       const enhancedAssets = enhanceHoldings(holdings, prices, assetType);
       const symbol = findMostValuedHoldingSymbol(enhancedAssets);
-      setMostValuedSymbol(symbol || '');
+      if (symbol === 'USDT' || symbol === 'USDC') {
+        setMostValuedSymbol('BTC');
+      } else {
+        setMostValuedSymbol(symbol || '');
+      }
     }
   }, [prices, holdings, holdingsLoading, assetType]);
 
@@ -57,7 +63,7 @@ export const AssetTypeDashboard = ({
         <Box style={{height: '500px', width: '100%'}}>
           {mostValuedSymbol && (
             <AdvancedRealTimeChart
-              symbol={`${priceSymbolPrefix}${mostValuedSymbol}`}
+              symbol={`${priceSymbolPrefix}${mostValuedSymbol}${priceSymbolSuffix}`}
               theme='dark'
               autosize
             />
