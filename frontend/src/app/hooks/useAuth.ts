@@ -10,8 +10,8 @@ const isAxiosError = (error: any): error is AxiosError => {
 };
 
 export const useLogin = () => {
-  const setToken = useAuthStore((state) => state.setToken);
-  const setUser = useAuthStore((state) => state.setUser);
+  const {setToken} = useAuthStore();
+  const {setUser} = useAuthStore();
   const router = useRouter();
 
   const login = async (email: string, password: string) => {
@@ -22,7 +22,8 @@ export const useLogin = () => {
       });
       setToken(response.data.access_token);
       setUser(response.data.user);
-      Cookies.set('auth_token', response.data.access_token, {expires: 1});
+      Cookies.set('user', JSON.stringify(response.data.user), {expires: 7});
+      Cookies.set('auth_token', response.data.access_token, {expires: 7});
       router.push('/dashboard');
       SuccessToast('Login successful');
     } catch (error) {

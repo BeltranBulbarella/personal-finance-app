@@ -23,8 +23,7 @@ export const useHoldings = () => {
       if (useHoldingsStore.getState().loading) return;
       setLoading(true);
 
-      const url = `/holdings`;
-      const response = await axiosInstance.get(url);
+      const response = await axiosInstance.get('/holdings');
       setHoldings(response.data);
       setLoading(false);
     } catch (error) {
@@ -66,10 +65,52 @@ export const useHoldings = () => {
     }
   };
 
+  const addCash = async (userId: number, amount: number) => {
+    try {
+      const response = await axiosInstance.post('/holdings/add-cash', {
+        userId,
+        amount,
+      });
+      SuccessToast('Cash added successfully');
+      return response.data;
+    } catch (error) {
+      console.error('Add cash error:', error);
+      ErrorToast('Failed to add cash');
+    }
+  };
+
+  const removeCash = async (userId: number, amount: number) => {
+    try {
+      const response = await axiosInstance.post('/holdings/remove-cash', {
+        userId,
+        amount,
+      });
+      SuccessToast('Cash removed successfully');
+      return response.data;
+    } catch (error) {
+      console.error('Remove cash error:', error);
+      ErrorToast('Failed to remove cash');
+    }
+  };
+
+  const getCashBalance = async (userId: number) => {
+    try {
+      const response = await axiosInstance.get(`/holdings/get-cash/${userId}`);
+      SuccessToast('Cash balance retrieved successfully');
+      return response.data;
+    } catch (error) {
+      console.error('Get cash balance error:', error);
+      ErrorToast('Failed to retrieve cash balance');
+    }
+  };
+
   return {
     fetchHoldings,
     createHolding,
     deleteHolding,
     updateHoldingData,
+    addCash,
+    removeCash,
+    getCashBalance,
   };
 };

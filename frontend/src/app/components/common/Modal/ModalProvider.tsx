@@ -1,17 +1,20 @@
 'use client';
 import React from 'react';
-import {CryptoTransactionModal} from '@/app/components/common/Modal/CryptoTransactionModal';
-import {StockTransactionModal} from '@/app/components/common/Modal/StockTransactionModal';
+import {CryptoTransactionModal} from '@/app/components/common/Modal/Modals/CryptoTransactionModal';
+import {StockTransactionModal} from '@/app/components/common/Modal/Modals/StockTransactionModal';
 import {useModalStore} from '@/app/store/useModalStore';
+import {CashTransactionModal} from '@/app/components/common/Modal/Modals/CashTransactionModal';
 
 export enum ModalEnum {
   CryptoTransaction = 'cryptoTransactionModal',
   StockTransaction = 'stockTransactionModal',
+  CashTransaction = 'cashTransactionModal',
 }
 
 const MODALS: Record<ModalEnum, React.ComponentType<any>> = {
   [ModalEnum.CryptoTransaction]: CryptoTransactionModal,
   [ModalEnum.StockTransaction]: StockTransactionModal,
+  [ModalEnum.CashTransaction]: CashTransactionModal,
 };
 
 export const ModalProvider = () => {

@@ -23,5 +23,6 @@ export const sidebarElements = [
     icon: <AttachMoneyIcon />,
     text: 'Cash',
     href: 'cash',
+    modal: ModalEnum.CashTransaction,
   },
 ];
