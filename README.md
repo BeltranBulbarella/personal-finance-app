@@ -24,6 +24,7 @@ This repository contains the code for a comprehensive investment management syst
 - **GraphQL**: For efficient data fetching
 - **Docker**: Description: Used for containerizing the application, ensuring consistency across various development and production environments.
 - **CI/CD**: GitHub Actions for automated testing and deployment
+- **Swagger**: Navigate to http://localhost:3000/api#/ to view the Swagger UI.
 
 ## Project Structure
 
