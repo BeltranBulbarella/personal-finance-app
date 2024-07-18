@@ -4,8 +4,9 @@ import type {ReactNode} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {Box} from '@mui/material';
 import {ThemeProvider} from '@/app/components/common/Theme/ThemeProvider';
-import {AuthLayout} from '@/app/components/ui/Layout/AuthLayout';
+import {AuthLayout} from '@/app/components/common/Layout/AuthLayout';
 import {Flip, ToastContainer} from 'react-toastify';
+import {ModalProvider} from '@/app/components/common/Modal/ModalProvider';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -33,6 +34,7 @@ export default function RootLayout({children}: {children: ReactNode}) {
             theme='colored'
             transition={Flip}
           />
+          <ModalProvider />
           <AuthLayout>
             <Box
               sx={{

@@ -1,4 +1,13 @@
-import { Controller, Post, Body, Get, Param, Put, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { CreateAssetDto, UpdateAssetDto } from '../dto/asset.dto';
 import { AssetService } from '../services/assets.service';
 
@@ -12,8 +21,8 @@ export class AssetController {
   }
 
   @Get()
-  findAll() {
-    return this.assetService.findAllAssets();
+  findAll(@Query('type') type?: string) {
+    return this.assetService.findAllAssets(type);
   }
 
   @Get(':id')

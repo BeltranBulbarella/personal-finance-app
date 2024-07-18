@@ -4,8 +4,7 @@ import { PrismaService } from '../../../services/prisma/prisma.service';
 
 @Injectable()
 export class AssetService {
-  constructor(private prisma: PrismaService) {
-  }
+  constructor(private prisma: PrismaService) {}
 
   async createAsset(dto: CreateAssetDto) {
     return this.prisma.asset.create({ data: dto });
@@ -19,8 +18,14 @@ export class AssetService {
     return this.prisma.asset.delete({ where: { id } });
   }
 
-  async findAllAssets() {
-    return this.prisma.asset.findMany();
+  async findAllAssets(type?: string) {
+    if (type) {
+      return this.prisma.asset.findMany({
+        where: { type },
+      });
+    } else {
+      return this.prisma.asset.findMany();
+    }
   }
 
   async findOneAsset(id: number) {

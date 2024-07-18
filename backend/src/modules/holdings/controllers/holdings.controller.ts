@@ -1,4 +1,13 @@
-import { Controller, Post, Body, Get, Param, Put, Delete, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { CreateHoldingDto } from '../dto/holding.dto';
 import { HoldingService } from '../services/holdings.service';
 

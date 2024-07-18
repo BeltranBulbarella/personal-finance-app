@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import type {ReactNode} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {Box} from '@mui/material';
-import {Layout} from '@/app/components/ui/Layout/Layout';
+import {Layout} from '@/app/components/common/Layout/Layout';
 
 const inter = Inter({subsets: ['latin']});
 
