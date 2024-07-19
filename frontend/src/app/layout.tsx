@@ -1,12 +1,14 @@
 import {Inter} from 'next/font/google';
 import '../app/styles/globals.css';
 import type {ReactNode} from 'react';
+import {Suspense} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {Box} from '@mui/material';
 import {ThemeProvider} from '@/app/components/common/Theme/ThemeProvider';
 import {AuthLayout} from '@/app/components/common/Layout/AuthLayout';
 import {Flip, ToastContainer} from 'react-toastify';
 import {ModalProvider} from '@/app/components/common/Modal/ModalProvider';
+import Loading from '@/app/loading';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -19,34 +21,36 @@ export default function RootLayout({children}: {children: ReactNode}) {
   return (
     <html suppressHydrationWarning lang='en'>
       <body className={inter.className}>
-        <ThemeProvider>
-          <ToastContainer
-            style={{marginTop: '60px'}}
-            autoClose={3000}
-            limit={3}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme='colored'
-            transition={Flip}
-          />
-          <ModalProvider />
-          <AuthLayout>
-            <Box
-              sx={{
-                marginTop: '80px',
-                marginBottom: '70px',
-                paddingX: {xs: 2, sm: 3, md: 4, lg: 5},
-              }}
-            >
-              {children}
-            </Box>
-          </AuthLayout>
-        </ThemeProvider>
+        <Suspense fallback={<Loading />}>
+          <ThemeProvider>
+            <ToastContainer
+              style={{marginTop: '60px'}}
+              autoClose={3000}
+              limit={3}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='colored'
+              transition={Flip}
+            />
+            <ModalProvider />
+            <AuthLayout>
+              <Box
+                sx={{
+                  marginTop: '80px',
+                  marginBottom: '70px',
+                  paddingX: {xs: 2, sm: 3, md: 4, lg: 5},
+                }}
+              >
+                {children}
+              </Box>
+            </AuthLayout>
+          </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );

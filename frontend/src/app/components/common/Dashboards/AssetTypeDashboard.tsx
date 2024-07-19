@@ -38,8 +38,6 @@ export const AssetTypeDashboard = ({
     filteredHoldings[0] || {asset: {symbol: 'BTC'}},
   ).asset.symbol;
 
-  if (holdingsLoading) return <Box>Loading...</Box>;
-
   return (
     <Box>
       <h1>{`${assetType.charAt(0).toUpperCase() + assetType.slice(1)} Dashboard`}</h1>

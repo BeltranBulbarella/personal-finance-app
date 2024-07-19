@@ -12,7 +12,7 @@ export interface TransactionData {
 }
 
 export const useTransactions = () => {
-  const {fetchHoldings} = useHoldings();
+  const {fetchHoldings, fetchBalances} = useHoldings();
   const createTransaction = async (transactionData: TransactionData) => {
     console.log('transactionData', transactionData);
     try {
@@ -22,27 +22,11 @@ export const useTransactions = () => {
       );
       SuccessToast('Transaction created successfully');
       await fetchHoldings();
+      await fetchBalances();
       return response.data;
     } catch (error: any) {
       console.error('Create transaction error:', error);
       ErrorToast(error.response.data.message);
-    }
-  };
-
-  const updateTransaction = async (
-    id: number,
-    transactionData: TransactionData,
-  ) => {
-    try {
-      const response = await axiosInstance.put(
-        `/transactions/${id}`,
-        transactionData,
-      );
-      SuccessToast('Transaction updated successfully');
-      return response.data;
-    } catch (error) {
-      console.error('Update transaction error:', error);
-      ErrorToast('Failed to update transaction');
     }
   };
 
@@ -58,7 +42,6 @@ export const useTransactions = () => {
 
   return {
     createTransaction,
-    updateTransaction,
     deleteTransaction,
   };
 };

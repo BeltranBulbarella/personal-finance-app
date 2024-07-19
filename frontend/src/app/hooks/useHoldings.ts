@@ -1,14 +1,17 @@
 import axiosInstance from '@/utils/axiosInstance';
 import {useHoldingsStore} from '@/app/store/holdingsStore';
+import {ErrorToast, SuccessToast} from '@/app/components/common/Toast/Toast';
 
 export const useHoldings = () => {
   const {
+    balances,
     setBalances,
     balancesLoading,
     setBalancesLoading,
     setFetchedBalances,
     setHoldings,
     holdingsLoading,
+    setFetchedHoldings,
     setHoldingsLoading,
   } = useHoldingsStore();
 
@@ -19,6 +22,7 @@ export const useHoldings = () => {
 
       const response = await axiosInstance.get('/holdings/with-prices/1');
       setHoldings(response.data);
+      setFetchedHoldings(true);
       setHoldingsLoading(false);
     } catch (error) {
       console.error('Fetching holdings error:', error);
@@ -41,8 +45,45 @@ export const useHoldings = () => {
     }
   };
 
+  const addCash = async (userId: number, amount: number) => {
+    try {
+      const response = await axiosInstance.post('/holdings/add-cash', {
+        userId,
+        amount,
+      });
+      setBalances({
+        ...balances,
+        cash: response.data.cashBalance,
+      });
+      SuccessToast('Cash added successfully');
+      return response.data;
+    } catch (error) {
+      console.error('Add cash error:', error);
+      ErrorToast('Failed to add cash');
+    }
+  };
+  const removeCash = async (userId: number, amount: number) => {
+    try {
+      const response = await axiosInstance.post('/holdings/remove-cash', {
+        userId,
+        amount,
+      });
+      setBalances({
+        ...balances,
+        cash: response.data.cashBalance,
+      });
+      SuccessToast('Cash removed successfully');
+      return response.data;
+    } catch (error) {
+      console.error('Remove cash error:', error);
+      ErrorToast('Failed to remove cash');
+    }
+  };
+
   return {
     fetchHoldings,
     fetchBalances,
+    addCash,
+    removeCash,
   };
 };

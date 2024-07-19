@@ -9,13 +9,7 @@ import {roundTo} from '@/utils/numberUtils';
 
 export const Dashboard = () => {
   const {user} = useAuthStore();
-  const {
-    fetchedHoldings,
-    holdingsLoading,
-    balances,
-    fetchedBalances,
-    balancesLoading,
-  } = useHoldingsStore();
+  const {fetchedHoldings, balances, fetchedBalances} = useHoldingsStore();
   const {fetchBalances, fetchHoldings} = useHoldings();
 
   useEffect(() => {
@@ -26,10 +20,6 @@ export const Dashboard = () => {
       fetchHoldings();
     }
   }, []);
-
-  if (balancesLoading || holdingsLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <>
