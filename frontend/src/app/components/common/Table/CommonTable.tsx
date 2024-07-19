@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 interface Column {
   id: string;
   label: string;
-  format?: (value: any) => any;
+  format?: (value: any) => any | string;
   minWidth?: number;
 }
 
