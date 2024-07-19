@@ -1,48 +1,24 @@
 import create from 'zustand';
-
-interface Holding {
-  id: number;
-  userId: number;
-  assetId: number;
-  quantity: number;
-  averageBuyPrice: number;
-  asset: {
-    id: number;
-    name: string;
-    symbol: string;
-    type: string;
-  };
-}
+import type {Balances, Holding} from '@/app/types/types';
 
 interface HoldingsState {
+  balances: Balances;
+  setBalances: (balances: Balances) => void;
   holdings: Holding[];
-  cashBalance: number;
-  setCashBalance: (cashBalance: number) => void;
-  loading: boolean;
-  setLoading: (loading: boolean) => void;
   setHoldings: (holdings: Holding[]) => void;
-  addHolding: (holding: Holding) => void;
-  removeHolding: (id: number) => void;
-  updateHolding: (id: number, data: Partial<Holding>) => void;
+  fetchedHoldings: boolean;
+  setFetchedHoldings: (fetched: boolean) => void;
+  holdingsLoading: boolean;
+  setHoldingsLoading: (loading: boolean) => void;
 }
 
-export const useHoldingsStore = create<HoldingsState>((set, get) => ({
+export const useHoldingsStore = create<HoldingsState>((set) => ({
+  balances: {cash: 0, crypto: 0, stock: 0},
+  setBalances: (balances) => set({balances}),
   holdings: [],
-  cashBalance: 0,
-  setCashBalance: (cashBalance) => set({cashBalance}),
-  loading: false,
-  setLoading: (loading) => set({loading}),
   setHoldings: (holdings) => set({holdings}),
-  addHolding: (holding) =>
-    set((state) => ({holdings: [...state.holdings, holding]})),
-  removeHolding: (id) =>
-    set((state) => ({
-      holdings: state.holdings.filter((holding) => holding.id !== id),
-    })),
-  updateHolding: (id, data) =>
-    set((state) => ({
-      holdings: state.holdings.map((holding) =>
-        holding.id === id ? {...holding, ...data} : holding,
-      ),
-    })),
+  holdingsLoading: false,
+  setHoldingsLoading: (loading) => set({holdingsLoading: loading}),
+  fetchedHoldings: false,
+  setFetchedHoldings: (fetched) => set({fetchedHoldings: fetched}),
 }));

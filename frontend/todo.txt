@@ -1,0 +1,7 @@
+finish dashboard
+loading skeletons
+testing
+deploy
+ci-cd
+add platform bought and stored
+docker

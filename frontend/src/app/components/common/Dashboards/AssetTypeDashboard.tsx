@@ -1,19 +1,12 @@
 'use client';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Box} from '@mui/material';
-import CommonTable from '@/app/components/common/Table/CommonTable';
-import {useHoldings} from '@/app/hooks/useHoldings';
 import {useHoldingsStore} from '@/app/store/holdingsStore';
 import {AdvancedRealTimeChart} from 'react-ts-tradingview-widgets';
-import {
-  enhanceHoldings,
-  findMostValuedHoldingSymbol,
-} from '@/utils/utilFunctions';
+import CommonTable from '@/app/components/common/Table/CommonTable';
 
 interface AssetTypeDashboardProps {
   assetType: string;
-  fetchPrices: (symbols: string[]) => Promise<void>;
-  prices: Record<string, number | null>;
   tableColumns: any;
   priceSymbolPrefix?: string;
   priceSymbolSuffix?: string;
@@ -21,38 +14,21 @@ interface AssetTypeDashboardProps {
 
 export const AssetTypeDashboard = ({
   assetType,
-  fetchPrices,
-  prices,
   tableColumns,
   priceSymbolPrefix = '',
   priceSymbolSuffix = '',
 }: AssetTypeDashboardProps) => {
-  const {fetchHoldings} = useHoldings();
-  const {holdings, loading: holdingsLoading} = useHoldingsStore();
-  const [mostValuedSymbol, setMostValuedSymbol] = useState('');
+  const {holdings, holdingsLoading} = useHoldingsStore();
 
-  useEffect(() => {
-    if (!holdings.length) {
-      fetchHoldings();
-    } else {
-      const symbols = holdings
-        .filter((h) => h.asset.type === assetType)
-        .map((h) => h.asset.symbol);
-      fetchPrices(symbols);
-    }
-  }, [holdings, fetchPrices, assetType]);
-
-  useEffect(() => {
-    if (!holdingsLoading && prices) {
-      const enhancedAssets = enhanceHoldings(holdings, prices, assetType);
-      const symbol = findMostValuedHoldingSymbol(enhancedAssets);
-      if (symbol === 'USDT' || symbol === 'USDC') {
-        setMostValuedSymbol('BTC');
-      } else {
-        setMostValuedSymbol(symbol || '');
-      }
-    }
-  }, [prices, holdings, holdingsLoading, assetType]);
+  const filteredHoldings = holdings.filter((h) => h.asset.type === assetType);
+  const mostValuedSymbol = filteredHoldings.reduce(
+    (max, h) => {
+      if (!h.totalValue || !max.totalValue) return h;
+      if (h.totalValue > max.totalValue) return h;
+      return max;
+    },
+    filteredHoldings[0] || {asset: {symbol: 'BTC'}},
+  ).asset.symbol;
 
   if (holdingsLoading) return <Box>Loading...</Box>;
 
@@ -73,7 +49,7 @@ export const AssetTypeDashboard = ({
           <CommonTable
             loading={holdingsLoading}
             columns={tableColumns}
-            data={enhanceHoldings(holdings, prices, assetType)}
+            data={filteredHoldings}
           />
         </Box>
       </Box>
