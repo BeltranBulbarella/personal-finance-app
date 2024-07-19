@@ -14,12 +14,20 @@ const auth_module_1 = require("./modules/auth/auth.module");
 const assets_module_1 = require("./modules/assets/assets.module");
 const transactions_module_1 = require("./modules/transactions/transactions.module");
 const holdings_module_1 = require("./modules/holdings/holdings.module");
+const balance_module_1 = require("./modules/balance/balance.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule, auth_module_1.AuthModule, assets_module_1.AssetsModule, transactions_module_1.TransactionsModule, holdings_module_1.HoldingsModule],
+        imports: [
+            users_module_1.UsersModule,
+            auth_module_1.AuthModule,
+            assets_module_1.AssetsModule,
+            transactions_module_1.TransactionsModule,
+            holdings_module_1.HoldingsModule,
+            balance_module_1.BalanceModule,
+        ],
         controllers: [health_controller_1.HealthController],
         providers: [],
     })

@@ -1,9 +1,10 @@
 'use client';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box} from '@mui/material';
 import {useHoldingsStore} from '@/app/store/holdingsStore';
 import {AdvancedRealTimeChart} from 'react-ts-tradingview-widgets';
 import CommonTable from '@/app/components/common/Table/CommonTable';
+import {useHoldings} from '@/app/hooks/useHoldings';
 
 interface AssetTypeDashboardProps {
   assetType: string;
@@ -18,7 +19,14 @@ export const AssetTypeDashboard = ({
   priceSymbolPrefix = '',
   priceSymbolSuffix = '',
 }: AssetTypeDashboardProps) => {
-  const {holdings, holdingsLoading} = useHoldingsStore();
+  const {holdings, holdingsLoading, fetchedHoldings} = useHoldingsStore();
+  const {fetchHoldings} = useHoldings();
+
+  useEffect(() => {
+    if (!fetchedHoldings) {
+      fetchHoldings();
+    }
+  }, []);
 
   const filteredHoldings = holdings.filter((h) => h.asset.type === assetType);
   const mostValuedSymbol = filteredHoldings.reduce(

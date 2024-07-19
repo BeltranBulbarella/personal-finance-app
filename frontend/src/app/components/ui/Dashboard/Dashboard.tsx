@@ -5,26 +5,31 @@ import useAuthStore from '@/app/store/authStore';
 import {useHoldingsStore} from '@/app/store/holdingsStore';
 import {useHoldings} from '@/app/hooks/useHoldings';
 import {PortfolioCard} from '@/app/components/common/Card/PortfolioCard';
-import {updateAssetValues} from '@/utils/portfolioUtils';
 import {roundTo} from '@/utils/numberUtils';
 
 export const Dashboard = () => {
   const {user} = useAuthStore();
-  const {balances, fetchedHoldings, setFetchedHoldings} = useHoldingsStore();
-  const {getCashBalance, fetchHoldings} = useHoldings();
+  const {
+    fetchedHoldings,
+    holdingsLoading,
+    balances,
+    fetchedBalances,
+    balancesLoading,
+  } = useHoldingsStore();
+  const {fetchBalances, fetchHoldings} = useHoldings();
 
   useEffect(() => {
+    if (!fetchedBalances && user) {
+      fetchBalances();
+    }
     if (!fetchedHoldings && user) {
-      fetchHoldings().then(() => {
-        getCashBalance(user?.id);
-        updateAssetValues('crypto');
-        updateAssetValues('stock');
-        setFetchedHoldings(true);
-      });
+      fetchHoldings();
     }
   }, []);
 
-  console.log(balances);
+  if (balancesLoading || holdingsLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>

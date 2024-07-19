@@ -32,3 +32,17 @@ export class UpdateHoldingDto {
   })
   averageBuyPrice?: number;
 }
+
+export class EnhancedHoldingDto extends CreateHoldingDto {
+  @ApiProperty({
+    example: 1500,
+    description: 'Current market price of the asset',
+  })
+  currentPrice: number;
+
+  @ApiProperty({
+    example: 500,
+    description: 'Profit and loss for this holding',
+  })
+  pnl: number;
+}

@@ -1,6 +1,5 @@
 import axiosInstance from '@/utils/axiosInstance';
 import {ErrorToast, SuccessToast} from '@/app/components/common/Toast/Toast';
-import {useHoldingsStore} from '@/app/store/holdingsStore';
 import {useHoldings} from '@/app/hooks/useHoldings';
 
 export interface TransactionData {
@@ -12,16 +11,10 @@ export interface TransactionData {
   transactionDate: Date;
 }
 
-export interface UpdateTransactionData {
-  quantity?: number;
-  pricePerUnit?: number;
-  transactionType?: 'BUY' | 'SELL';
-  transactionDate?: string;
-}
-
 export const useTransactions = () => {
   const {fetchHoldings} = useHoldings();
   const createTransaction = async (transactionData: TransactionData) => {
+    console.log('transactionData', transactionData);
     try {
       const response = await axiosInstance.post(
         '/transactions',
@@ -30,9 +23,9 @@ export const useTransactions = () => {
       SuccessToast('Transaction created successfully');
       await fetchHoldings();
       return response.data;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Create transaction error:', error);
-      ErrorToast('Failed to create transaction');
+      ErrorToast(error.response.data.message);
     }
   };
 

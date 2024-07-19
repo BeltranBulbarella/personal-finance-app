@@ -91,4 +91,14 @@ export class HoldingsController {
   getCash(@Param('userId') userId: string) {
     return this.holdingService.getCashBalance(parseInt(userId));
   }
+
+  @Get('with-prices/:userId')
+  @ApiOperation({ summary: 'Get holdings with current prices and PNL' })
+  @ApiResponse({
+    status: 200,
+    description: 'Holdings with prices and PNL retrieved successfully.',
+  })
+  async getHoldingsWithPrices(@Param('userId') userId: string) {
+    return this.holdingService.getHoldingsWithPrices(+userId);
+  }
 }

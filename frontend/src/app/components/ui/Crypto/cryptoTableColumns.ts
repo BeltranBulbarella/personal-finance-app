@@ -35,6 +35,6 @@ export const cryptoTableColumns = [
     id: 'winnings',
     label: 'PNL',
     minWidth: 100,
-    format: (value: {winnings: number}) => `$${value.winnings.toFixed(2)}`,
+    format: (value: {pnl: number}) => `$${value.pnl.toFixed(2)}`,
   },
 ];

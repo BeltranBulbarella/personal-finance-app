@@ -1,11 +1,12 @@
 import axiosInstance from '@/utils/axiosInstance';
-import {ErrorToast, SuccessToast} from '@/app/components/common/Toast/Toast';
 import {useHoldingsStore} from '@/app/store/holdingsStore';
 
 export const useHoldings = () => {
   const {
-    balances,
     setBalances,
+    balancesLoading,
+    setBalancesLoading,
+    setFetchedBalances,
     setHoldings,
     holdingsLoading,
     setHoldingsLoading,
@@ -16,7 +17,7 @@ export const useHoldings = () => {
       if (holdingsLoading) return;
       setHoldingsLoading(true);
 
-      const response = await axiosInstance.get('/holdings');
+      const response = await axiosInstance.get('/holdings/with-prices/1');
       setHoldings(response.data);
       setHoldingsLoading(false);
     } catch (error) {
@@ -25,51 +26,23 @@ export const useHoldings = () => {
     }
   };
 
-  const addCash = async (userId: number, amount: number) => {
+  const fetchBalances = async () => {
     try {
-      const response = await axiosInstance.post('/holdings/add-cash', {
-        userId,
-        amount,
-      });
-      SuccessToast('Cash added successfully');
-      return response.data;
-    } catch (error) {
-      console.error('Add cash error:', error);
-      ErrorToast('Failed to add cash');
-    }
-  };
+      if (balancesLoading) return;
+      setBalancesLoading(true);
 
-  const removeCash = async (userId: number, amount: number) => {
-    try {
-      const response = await axiosInstance.post('/holdings/remove-cash', {
-        userId,
-        amount,
-      });
-      SuccessToast('Cash removed successfully');
-      return response.data;
+      const response = await axiosInstance.get('/balances/1');
+      setBalances(response.data);
+      setFetchedBalances(true);
+      setBalancesLoading(false);
     } catch (error) {
-      console.error('Remove cash error:', error);
-      ErrorToast('Failed to remove cash');
-    }
-  };
-
-  const getCashBalance = async (userId: number) => {
-    try {
-      const response = await axiosInstance.get(`/holdings/get-cash/${userId}`);
-      setBalances({
-        cash: response.data,
-        crypto: balances.crypto,
-        stock: balances.stock,
-      });
-    } catch (error) {
-      ErrorToast('Failed to retrieve cash balance');
+      console.error('Fetching holdings error:', error);
+      setBalancesLoading(false);
     }
   };
 
   return {
     fetchHoldings,
-    addCash,
-    removeCash,
-    getCashBalance,
+    fetchBalances,
   };
 };
