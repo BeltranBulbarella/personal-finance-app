@@ -3,12 +3,12 @@
   "builds": [
     {
       "src": "backend/Dockerfile",
-      "use": "@vercel/docker",
+      "use": "@vercel/next",
       "config": { "dockerfile": "backend/Dockerfile" }
     },
     {
       "src": "frontend/Dockerfile",
-      "use": "@vercel/docker",
+      "use": "@vercel/node",
       "config": { "dockerfile": "frontend/Dockerfile" }
     }
   ],
