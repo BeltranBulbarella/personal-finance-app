@@ -1,12 +1,12 @@
 {
   "version": 2,
   "env": {
-    "DATABASE_URL": "@database_url",
-    "JWT_SECRET": "@jwt_secret",
-    "TWELVEDATA_API_KEY": "@twelvedata_api_key",
-    "NEXT_PUBLIC_API_URL": "@next_public_api_url",
-    "POSTGRES_USER": "@postgres_user",
-    "POSTGRES_PASSWORD": "@postgres_password",
-    "POSTGRES_DB": "@postgres_db"
+    "DATABASE_URL": "@DATABASE_URL",
+    "JWT_SECRET": "@JWT_SECRET",
+    "TWELVEDATA_API_KEY": "@TWELVEDATA_API_KEY",
+    "NEXT_PUBLIC_API_URL": "@NEXT_PUBLIC_API_URL",
+    "POSTGRES_USER": "@POSTGRES_USER",
+    "POSTGRES_PASSWORD": "@POSTGRES_PASSWORD",
+    "POSTGRES_DB": "@POSTGRES_DB"
   }
 }
