@@ -1,15 +1,5 @@
 {
   "version": 2,
-  "projects": [
-    {
-      "name": "backend",
-      "root": "./backend"
-    },
-    {
-      "name": "frontend",
-      "root": "./frontend"
-    }
-  ],
   "env": {
     "DATABASE_URL": "@database_url",
     "JWT_SECRET": "@jwt_secret",
