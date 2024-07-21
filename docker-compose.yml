@@ -1,30 +1,30 @@
 version: '3.8'
-
 services:
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: investmentdb
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
   backend:
-    build:
-      context: ./backend
-    command: npm run dev
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
+    build: ./backend
     ports:
-      - "3001:3000"
-    depends_on:
-      - db
+      - "3000:3000"
     environment:
-      DATABASE_URL: "postgresql://admin:admin@db:5432/investmentdb"
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - TWELVEDATA_API_KEY=${TWELVEDATA_API_KEY}
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    depends_on:
+      - postgres
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3001:3001"
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  postgres-data:

@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
 }
 
 datasource db {
@@ -28,7 +29,7 @@ model User {
 
 model Asset {
   id           Int           @id @default(autoincrement())
-  type         String        // 'stock' or 'crypto'
+  type         String // 'stock' or 'crypto'
   symbol       String        @unique
   name         String
   Transactions Transaction[]
@@ -41,18 +42,18 @@ model Transaction {
   assetId         Int?
   quantity        Float
   pricePerUnit    Float
-  transactionType String   // 'buy', 'sell', or 'cash'
+  transactionType String // 'buy', 'sell', or 'cash'
   transactionDate DateTime
   user            User     @relation(fields: [userId], references: [id])
   asset           Asset?   @relation(fields: [assetId], references: [id], onDelete: SetNull)
 }
 
 model Holding {
-  id              Int     @id @default(autoincrement())
+  id              Int   @id @default(autoincrement())
   userId          Int
   assetId         Int
   quantity        Float
-  averageBuyPrice Float   @default(0)
-  user            User    @relation(fields: [userId], references: [id])
-  asset           Asset   @relation(fields: [assetId], references: [id])
+  averageBuyPrice Float @default(0)
+  user            User  @relation(fields: [userId], references: [id])
+  asset           Asset @relation(fields: [assetId], references: [id])
 }

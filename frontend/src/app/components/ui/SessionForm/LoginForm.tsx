@@ -4,8 +4,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import React, {useState} from "react";
-import VisibilityIcon from '@mui/icons-material/visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+// import VisibilityIcon from '@mui/icons-material/visibility';
+// import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import {useLogin} from "@/app/hooks/useAuth";
 import {ErrorToast} from "@/app/components/common/Toast/Toast";
 
@@ -68,7 +68,7 @@ export const LoginForm = () => {
                                     edge="end"
                                     sx={{marginRight: '1px'}}
                                 >
-                                    {showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+                                    {/*{showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}*/}
                                 </IconButton>
                             </InputAdornment>
                         )
