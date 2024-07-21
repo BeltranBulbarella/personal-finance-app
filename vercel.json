@@ -2,24 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/next",
-      "config": { "outputDirectory": "out" }
-    },
-    {
-      "src": "backend/package.json",
-      "use": "@vercel/node",
-      "config": { "outputDirectory": "dist" }
+      "src": "package.json",
+      "use": "@vercel/next"
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
-    }
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/" }
   ]
 }
