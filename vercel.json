@@ -2,22 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/next"
+      "src": "backend/Dockerfile",
+      "use": "@vercel/docker",
+      "config": { "dockerfile": "backend/Dockerfile" }
     },
     {
-      "src": "backend/package.json",
-      "use": "@vercel/node"
+      "src": "frontend/Dockerfile",
+      "use": "@vercel/docker",
+      "config": { "dockerfile": "frontend/Dockerfile" }
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/$1"
-    }
+    { "src": "/api/(.*)", "dest": "/backend/$1" },
+    { "src": "/(.*)", "dest": "/frontend/$1" }
   ]
 }
