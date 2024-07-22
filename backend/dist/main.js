@@ -7,7 +7,11 @@ const jwt_auth_guard_1 = require("./config/jwt-auth.guard");
 const swagger_1 = require("@nestjs/swagger");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    app.enableCors();
+    app.enableCors({
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true,
+    });
     app.useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true,
         transform: true,
