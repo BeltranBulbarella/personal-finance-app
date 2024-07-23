@@ -6,6 +6,7 @@ export interface TransactionData {
   userId: number;
   assetId: number;
   quantity: number;
+  moneySpent: number;
   pricePerUnit: number;
   transactionType: 'BUY' | 'SELL';
   transactionDate: Date;

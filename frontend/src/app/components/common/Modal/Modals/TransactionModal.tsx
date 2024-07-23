@@ -7,12 +7,11 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
 } from '@mui/material';
-import type {Asset} from '@/app/store/useAssetsStore';
-import {transactionTypes} from '@/app/types/types';
+import {Asset} from '@/app/store/useAssetsStore';
+import {AssetTypes, transactionTypes} from '@/app/types/types';
+import {CommonInput} from '@/app/components/common/Input/CommonInput';
+import {SelectInput} from '@/app/components/common/Input/SelectInput';
 
 interface TransactionModalProps {
   onClose: () => void;
@@ -20,6 +19,7 @@ interface TransactionModalProps {
   onSubmit: (data: any) => void;
   assets?: Asset[];
   customLabel?: string;
+  type: AssetTypes;
 }
 
 export const TransactionModal: React.FC<TransactionModalProps> = ({
@@ -28,13 +28,18 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
   onSubmit,
   assets,
   customLabel = 'Symbol',
+  type,
 }) => {
   const [selectedAsset, setSelectedAsset] = useState<Asset | null>(null);
   const [quantity, setQuantity] = useState('');
+  const [moneySpent, setMoneySpent] = useState('');
   const [price, setPrice] = useState('');
   const [transactionType, setTransactionType] = useState<
     transactionTypes.BUY | transactionTypes.SELL
   >(transactionTypes.BUY);
+  const [amountOrSpent, setAmountOrSpent] = useState<
+    'quantity' | 'amountSpent'
+  >('quantity');
 
   const handleTransactionTypeChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -45,10 +50,22 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
     }
   };
 
+  const handleAmountOrSpentChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newType: 'quantity' | 'amountSpent',
+  ) => {
+    if (newType) {
+      setAmountOrSpent(newType);
+      setQuantity('');
+      setMoneySpent('');
+    }
+  };
+
   const handleSubmit = () => {
     const data = {
       assetId: selectedAsset?.id,
-      quantity: parseFloat(quantity),
+      quantity: parseFloat(quantity) || 0,
+      moneySpent: parseFloat(moneySpent) || 0,
       pricePerUnit: parseFloat(price),
       transactionType,
     };
@@ -64,19 +81,15 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
           minWidth: 300,
         }}
       >
-        <Box sx={{mt: 2, mb: 2}}>
-          <Typography variant='body1'>Transaction Type</Typography>
-          <ToggleButtonGroup
-            color='primary'
-            value={transactionType}
-            exclusive
-            onChange={handleTransactionTypeChange}
-            fullWidth
-          >
-            <ToggleButton value='BUY'>Buy</ToggleButton>
-            <ToggleButton value='SELL'>Sell</ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
+        <SelectInput
+          title={'Transaction Type'}
+          value={transactionType}
+          onChange={handleTransactionTypeChange}
+          items={[
+            {value: transactionTypes.BUY, label: transactionTypes.BUY},
+            {value: transactionTypes.SELL, label: transactionTypes.SELL},
+          ]}
+        />
         {assets && (
           <Autocomplete
             options={assets}
@@ -95,22 +108,41 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             )}
           />
         )}
-        <TextField
-          label='Quantity'
-          type='number'
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-          fullWidth
-          margin='normal'
-        />
+        {type !== AssetTypes.CASH && (
+          <SelectInput
+            title={'Quantity or Amount Spent?'}
+            value={amountOrSpent}
+            onChange={handleAmountOrSpentChange}
+            items={[
+              {value: 'quantity', label: 'Quantity'},
+              {value: 'amountSpent', label: 'Amount spent'},
+            ]}
+          />
+        )}
+        {amountOrSpent === 'quantity' ? (
+          <CommonInput
+            label='Quantity'
+            type='number'
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            inputProps={{inputProps: {min: 0}}}
+          />
+        ) : (
+          <CommonInput
+            label='Amount Spent'
+            type='number'
+            value={moneySpent}
+            onChange={(e) => setMoneySpent(e.target.value)}
+            inputProps={{inputProps: {min: 0}}}
+          />
+        )}
         {assets && (
-          <TextField
+          <CommonInput
             label='Price'
             type='number'
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            fullWidth
-            margin='normal'
+            inputProps={{inputProps: {min: 0}}}
           />
         )}
         <Box sx={{display: 'flex', justifyContent: 'space-between', mt: 2}}>

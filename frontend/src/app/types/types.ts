@@ -3,6 +3,12 @@ export enum transactionTypes {
   SELL = 'SELL',
 }
 
+export enum AssetTypes {
+  CRYPTO = 'crypto',
+  STOCK = 'stock',
+  CASH = 'cash',
+}
+
 export interface Asset {
   id: number;
   name: string;
@@ -26,6 +32,7 @@ export interface Balances {
   cash: number;
   crypto: number;
   stock: number;
+
   [key: string]: number;
 }
 

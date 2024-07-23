@@ -1,15 +1,11 @@
 import create from 'zustand';
+import {AssetTypes} from "@/app/types/types";
 
 export interface Asset {
     id: number;
     name: string;
     symbol: string;
-    type: AssetType;
-}
-
-export enum AssetType {
-    Stock = 'stock',
-    Crypto = 'crypto',
+    type: AssetTypes;
 }
 
 interface AssetState {
