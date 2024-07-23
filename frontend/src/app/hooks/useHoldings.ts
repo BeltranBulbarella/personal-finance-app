@@ -26,6 +26,7 @@ export const useHoldings = () => {
       setHoldingsLoading(false);
     } catch (error) {
       console.error('Fetching holdings error:', error);
+      setFetchedHoldings(true);
       setHoldingsLoading(false);
     }
   };
@@ -41,6 +42,7 @@ export const useHoldings = () => {
       setBalancesLoading(false);
     } catch (error) {
       console.error('Fetching holdings error:', error);
+      setFetchedBalances(true);
       setBalancesLoading(false);
     }
   };

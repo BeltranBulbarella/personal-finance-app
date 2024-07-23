@@ -6,16 +6,18 @@ import {Box} from '@mui/material';
 import {TransactionModal} from '@/app/components/common/Modal/Modals/TransactionModal';
 import type {TransactionData} from '@/app/hooks/useTransactions';
 import {useTransactions} from '@/app/hooks/useTransactions';
+import {useAssets} from "@/app/hooks/useAssets";
 
 export const CryptoTransactionModal = ({onClose}: any) => {
-  const {assets, fetchAssets, loading} = useAssetsStore();
+  const {assets,assetsLoading, fetchedAssets} = useAssetsStore();
+  const {fetchAssets} = useAssets();
   const {createTransaction} = useTransactions();
 
   useEffect(() => {
-    if (!assets.length && !loading) {
+    if (!fetchedAssets && !assetsLoading) {
       fetchAssets();
     }
-  }, [assets.length, loading, fetchAssets]);
+  }, []);
 
   const handleSubmit = async (data: TransactionData) => {
     await createTransaction({

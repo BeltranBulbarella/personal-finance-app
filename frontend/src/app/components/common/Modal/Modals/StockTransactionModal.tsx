@@ -9,16 +9,18 @@ import {
   type TransactionData,
   useTransactions,
 } from '@/app/hooks/useTransactions';
+import {useAssets} from "@/app/hooks/useAssets";
 
 export const StockTransactionModal = ({onClose}: any) => {
-  const {assets, fetchAssets, loading} = useAssetsStore();
+  const {assets,assetsLoading, fetchedAssets} = useAssetsStore();
+  const {fetchAssets} = useAssets();
   const {createTransaction} = useTransactions();
 
   useEffect(() => {
-    if (!assets.length && !loading) {
+    if (!fetchedAssets && !assetsLoading) {
       fetchAssets();
     }
-  }, [assets.length, loading, fetchAssets]);
+  }, []);
 
   const handleSubmit = async (data: TransactionData) => {
     await createTransaction({
