@@ -40,8 +40,9 @@ model Transaction {
   id              Int      @id @default(autoincrement())
   userId          Int
   assetId         Int?
-  quantity        Float
+  quantity        Float?
   pricePerUnit    Float
+  moneySpent      Float? // Optional field to store the money spent
   transactionType String // 'buy', 'sell', or 'cash'
   transactionDate DateTime
   user            User     @relation(fields: [userId], references: [id])
@@ -49,11 +50,12 @@ model Transaction {
 }
 
 model Holding {
-  id              Int   @id @default(autoincrement())
+  id              Int    @id @default(autoincrement())
   userId          Int
   assetId         Int
-  quantity        Float
-  averageBuyPrice Float @default(0)
-  user            User  @relation(fields: [userId], references: [id])
-  asset           Asset @relation(fields: [assetId], references: [id])
+  quantity        Float?
+  moneySpent      Float?
+  averageBuyPrice Float  @default(0)
+  user            User   @relation(fields: [userId], references: [id])
+  asset           Asset  @relation(fields: [assetId], references: [id])
 }
