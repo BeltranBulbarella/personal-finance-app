@@ -1,9 +1,10 @@
+add platform bought and stored
+add amount spent to table
+make table edtiable add remove params from it
 finish dashboard
 loading skeletons
-404 page
 token stuff
 testing
 deploy
 ci-cd
-add platform bought and stored
-docker
+

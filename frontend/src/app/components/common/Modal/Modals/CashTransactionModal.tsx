@@ -2,7 +2,7 @@
 import React from 'react';
 import {Box} from '@mui/material';
 import {useHoldings} from '@/app/hooks/useHoldings';
-import {TransactionModal} from '@/app/components/common/Modal/Modals/TransactionModal';
+import {TransactionModal} from '@/app/components/common/Modal/GenericModals/TransactionModal';
 import {AssetTypes, transactionTypes} from '@/app/types/types';
 import useAuthStore from '@/app/store/authStore';
 import {ErrorToast} from '@/app/components/common/Toast/Toast';

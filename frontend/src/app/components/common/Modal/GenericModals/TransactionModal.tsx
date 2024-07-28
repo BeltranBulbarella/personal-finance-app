@@ -8,8 +8,7 @@ import {
   DialogTitle,
   TextField,
 } from '@mui/material';
-import {Asset} from '@/app/store/useAssetsStore';
-import {AssetTypes, transactionTypes} from '@/app/types/types';
+import {Asset, AssetTypes, transactionTypes} from '@/app/types/types';
 import {CommonInput} from '@/app/components/common/Input/CommonInput';
 import {SelectInput} from '@/app/components/common/Input/SelectInput';
 

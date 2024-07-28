@@ -4,6 +4,7 @@ import {ModalEnum} from '@/app/components/common/Modal/ModalProvider';
 import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import React from 'react';
+import {ShowChart} from '@mui/icons-material';
 
 export const sidebarElements = [
   {icon: <DashboardIcon />, text: 'Dashboard', href: 'dashboard'},
@@ -24,5 +25,11 @@ export const sidebarElements = [
     text: 'Cash',
     href: 'cash',
     modal: ModalEnum.CashTransaction,
+  },
+  {
+    icon: <ShowChart />,
+    text: 'Add Asset',
+    href: 'dashboard',
+    modal: ModalEnum.CreateAsset,
   },
 ];

@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import type {Asset} from '@/app/store/useAssetsStore';
 import {useAssetsStore} from '@/app/store/useAssetsStore';
 import {Box} from '@mui/material';
-import {TransactionModal} from '@/app/components/common/Modal/Modals/TransactionModal';
+import {TransactionModal} from '@/app/components/common/Modal/GenericModals/TransactionModal';
 import {
   type TransactionData,
   useTransactions,
