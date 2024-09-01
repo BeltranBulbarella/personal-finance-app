@@ -21,7 +21,7 @@ export const Layout = ({children}: {children: any}) => {
         ]}
       />
 
-      <Box>{children}</Box>
+      {children}
 
       <Bar
         position='bottom'

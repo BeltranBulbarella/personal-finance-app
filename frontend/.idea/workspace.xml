@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: added logout button, fixes in imports">
-      <change afterPath="$PROJECT_DIR$/src/app/components/common/Layout/AuthenticatedLayout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(authRoutes)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authRoutes)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/Card/AuthCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Card/AuthCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/common/Card/PortfolioCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Card/PortfolioCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/common/Layout/AuthLayout.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/common/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/common/Modal/Modals/StockTransactionModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Modal/Modals/StockTransactionModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/common/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Sidebar/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ui/Crypto/cryptoTableColumns.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Crypto/cryptoTableColumns.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/ToggleButtons/ToggleButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/ToggleButtons/ToggleButtons.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/ui/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ui/Stocks/stockTableColumns.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Stocks/stockTableColumns.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/store/useAssetsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store/useAssetsStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +126,7 @@
       <workItem from="1724413797221" duration="105000" />
       <workItem from="1724786467177" duration="1835000" />
       <workItem from="1725022586438" duration="247000" />
-      <workItem from="1725023175231" duration="8324000" />
+      <workItem from="1725023175231" duration="11878000" />
     </task>
     <task id="LOCAL-00001" summary="fixed session styles">
       <option name="closed" value="true" />
@@ -157,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721041376693</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: added logout button, fixes in imports">
+      <option name="closed" value="true" />
+      <created>1725208715174</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725208715174</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

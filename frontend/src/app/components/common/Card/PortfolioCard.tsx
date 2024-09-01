@@ -9,7 +9,7 @@ import {
 
 interface PortfolioCardProps {
   title: string;
-  amount?: string;
+  amount: string;
   percentageChange: string;
   loading?: boolean;
 }
@@ -29,7 +29,7 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
         {loading ? (
           <CircularProgress />
         ) : (
-          <Typography variant='h4'>{amount ?? 0}</Typography>
+          <Typography variant='h4'>{amount}</Typography>
         )}
         <Box display='flex' alignItems='center' justifyContent='center'>
           <Typography
