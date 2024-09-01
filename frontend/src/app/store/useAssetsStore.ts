@@ -1,5 +1,5 @@
 import create from 'zustand';
-import {Asset} from '@/app/types/types';
+import type {Asset} from '@/app/types/types';
 
 interface AssetState {
   assets: Asset[];

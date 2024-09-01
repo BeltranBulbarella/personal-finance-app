@@ -64,3 +64,26 @@ export const useRegister = () => {
   };
   return register;
 };
+
+export const useLogout = () => {
+  const {setToken, setUser} = useAuthStore();
+  const router = useRouter();
+
+  const logout = () => {
+    // Clear token and user from the store
+    setToken(null);
+    setUser(null);
+
+    // Remove cookies
+    Cookies.remove('auth_token');
+    Cookies.remove('user');
+
+    // Redirect to the login page
+    router.push('/login');
+
+    // Show a success message
+    SuccessToast('Logout successful');
+  };
+
+  return logout;
+};

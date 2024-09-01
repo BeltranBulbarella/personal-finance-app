@@ -41,4 +41,10 @@ export const cryptoTableColumns = [
       </span>
     ),
   },
+  {
+    id: 'moneySpent',
+    label: 'Cost/Money spent',
+    minWidth: 100,
+    format: (value: {moneySpent: number}) => `$${value.moneySpent.toFixed(2)}`,
+  },
 ];

@@ -5,7 +5,7 @@ import {Suspense} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {Box} from '@mui/material';
 import {ThemeProvider} from '@/app/components/common/Theme/ThemeProvider';
-import {AuthLayout} from '@/app/components/common/Layout/AuthLayout';
+import {Layout} from '@/app/components/common/Layout/Layout';
 import {Flip, ToastContainer} from 'react-toastify';
 import {ModalProvider} from '@/app/components/common/Modal/ModalProvider';
 import Loading from '@/app/loading';
@@ -38,17 +38,17 @@ export default function RootLayout({children}: {children: ReactNode}) {
               transition={Flip}
             />
             <ModalProvider />
-            <AuthLayout>
+            <Layout>
               <Box
                 sx={{
-                  marginTop: '80px',
+                  marginTop: '50px',
                   marginBottom: '70px',
-                  paddingX: {xs: 2, sm: 3, md: 4, lg: 5},
+                  paddingX: {xs: 2, sm: 3, md: 4},
                 }}
               >
                 {children}
               </Box>
-            </AuthLayout>
+            </Layout>
           </ThemeProvider>
         </Suspense>
       </body>

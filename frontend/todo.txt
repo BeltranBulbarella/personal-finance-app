@@ -1,10 +1,12 @@
 add platform bought and stored
-add amount spent to table
 make table edtiable add remove params from it
 finish dashboard
 loading skeletons
 token stuff
+virtualize assets
 testing
 deploy
 ci-cd
 
+redirect on register
+remove those that have 0 quantity

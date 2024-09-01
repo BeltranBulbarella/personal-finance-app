@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: theme components">
-      <change afterPath="$PROJECT_DIR$/../backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: added logout button, fixes in imports">
+      <change afterPath="$PROJECT_DIR$/src/app/components/common/Layout/AuthenticatedLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(authRoutes)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(authRoutes)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/Card/PortfolioCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Card/PortfolioCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/Layout/AuthLayout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/Modal/Modals/StockTransactionModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Modal/Modals/StockTransactionModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/common/Sidebar/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Sidebar/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/Crypto/cryptoTableColumns.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Crypto/cryptoTableColumns.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/Stocks/stockTableColumns.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Stocks/stockTableColumns.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store/useAssetsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store/useAssetsStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +43,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "BeltranBulbarella"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/BeltranBulbarella/personal-finance-app.git",
+    "accountId": "8933f1d0-2eb3-42e4-9011-8b2a3c158f2c"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -55,7 +80,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettierjs.PrettierConfiguration.Package": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -100,6 +125,13 @@
       <workItem from="1721246289880" duration="38000" />
       <workItem from="1721246331325" duration="13096000" />
       <workItem from="1721329434386" duration="26711000" />
+      <workItem from="1723911599198" duration="160000" />
+      <workItem from="1724360942154" duration="2000" />
+      <workItem from="1724412947549" duration="731000" />
+      <workItem from="1724413797221" duration="105000" />
+      <workItem from="1724786467177" duration="1835000" />
+      <workItem from="1725022586438" duration="247000" />
+      <workItem from="1725023175231" duration="8324000" />
     </task>
     <task id="LOCAL-00001" summary="fixed session styles">
       <option name="closed" value="true" />
@@ -147,6 +179,7 @@
     <MESSAGE value="fixed session styles" />
     <MESSAGE value="added session components" />
     <MESSAGE value="feat: theme components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: theme components" />
+    <MESSAGE value="feat: added logout button, fixes in imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added logout button, fixes in imports" />
   </component>
 </project>

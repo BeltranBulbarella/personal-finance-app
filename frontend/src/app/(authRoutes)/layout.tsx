@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import type {ReactNode} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {Box} from '@mui/material';
-import {Layout} from '@/app/components/common/Layout/Layout';
+import {AuthenticatedLayout} from '@/app/components/common/Layout/AuthenticatedLayout';
 
 const inter = Inter({subsets: ['latin']});
 
@@ -15,17 +15,17 @@ export const metadata = {
 export default function RootLayout({children}: {children: ReactNode}) {
   return (
     <Box className={inter.className}>
-      <Layout>
+      <AuthenticatedLayout>
         <Box
           sx={{
-            marginTop: '80px',
+            marginTop: '50px',
             marginBottom: '70px',
             paddingX: {xs: 2, sm: 3, md: 4, lg: 5},
           }}
         >
           {children}
         </Box>
-      </Layout>
+      </AuthenticatedLayout>
     </Box>
   );
 }

@@ -1,16 +1,24 @@
 import React from 'react';
-import {Box, Card, CardContent, Typography} from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  CircularProgress,
+  Typography,
+} from '@mui/material';
 
 interface PortfolioCardProps {
   title: string;
-  amount: string;
+  amount?: string;
   percentageChange: string;
+  loading?: boolean;
 }
 
 export const PortfolioCard: React.FC<PortfolioCardProps> = ({
   title,
   amount,
   percentageChange,
+  loading,
 }) => {
   return (
     <Card variant='outlined' sx={{minWidth: 200, m: 2}}>
@@ -18,7 +26,11 @@ export const PortfolioCard: React.FC<PortfolioCardProps> = ({
         <Typography variant='h6' color='text.secondary' gutterBottom>
           {title}
         </Typography>
-        <Typography variant='h4'>{amount}</Typography>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Typography variant='h4'>{amount ?? 0}</Typography>
+        )}
         <Box display='flex' alignItems='center' justifyContent='center'>
           <Typography
             variant='body2'
