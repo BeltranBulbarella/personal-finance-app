@@ -34,6 +34,7 @@ model Asset {
   name         String
   Transactions Transaction[]
   Holdings     Holding[]
+  AssetPrices  AssetPrice[]
 }
 
 model Transaction {
@@ -58,4 +59,14 @@ model Holding {
   averageBuyPrice Float  @default(0)
   user            User   @relation(fields: [userId], references: [id])
   asset           Asset  @relation(fields: [assetId], references: [id])
+}
+
+model AssetPrice {
+  id      Int      @id @default(autoincrement())
+  assetId Int
+  date    DateTime
+  price   Float
+  asset   Asset    @relation(fields: [assetId], references: [id])
+
+  @@unique([assetId, date]) // Ensure no duplicate entries for the same asset in the same month
 }

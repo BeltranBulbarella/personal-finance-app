@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: made login and register responsive">
-      <change beforePath="$PROJECT_DIR$/../backend/src/modules/users/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/modules/users/controllers/users.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/modules/users/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/modules/users/services/users.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/hooks/useHoldings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hooks/useHoldings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/prisma/migrations/20240902194356_init/migration.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/src/modules/historicalPrice/service/historicalPrice.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/src/services/redis/redis.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/modules/holdings/services/holdings.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/modules/holdings/services/holdings.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +123,7 @@
       <workItem from="1724786467177" duration="1835000" />
       <workItem from="1725022586438" duration="247000" />
       <workItem from="1725023175231" duration="13516000" />
-      <workItem from="1725230537313" duration="3346000" />
+      <workItem from="1725230537313" duration="6132000" />
     </task>
     <task id="LOCAL-00001" summary="fixed session styles">
       <option name="closed" value="true" />

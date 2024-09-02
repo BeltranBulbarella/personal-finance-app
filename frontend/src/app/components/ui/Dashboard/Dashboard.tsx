@@ -6,12 +6,16 @@ import {useHoldingsStore} from '@/app/store/holdingsStore';
 import {useHoldings} from '@/app/hooks/useHoldings';
 import {PortfolioCard} from '@/app/components/common/Card/PortfolioCard';
 import {roundTo} from '@/utils/numberUtils';
+import {useHistoricalPrices} from '@/app/hooks/useHistoricalPrices';
+import {useHistoricalPricesStore} from '@/app/store/useHistoricalPricesStore';
 
 export const Dashboard = () => {
   const {user} = useAuthStore();
   const {fetchedHoldings, balances, fetchedBalances, balancesLoading} =
     useHoldingsStore();
   const {fetchBalances, fetchHoldings} = useHoldings();
+  const {fetchHistoricalPrices, updateHistoricalPrices} = useHistoricalPrices();
+  const {historicalPrices} = useHistoricalPricesStore();
 
   useEffect(() => {
     if (!fetchedBalances && user) {
@@ -20,7 +24,14 @@ export const Dashboard = () => {
     if (!fetchedHoldings && user) {
       fetchHoldings();
     }
+    updateHistoricalPrices().then(() => {
+      fetchHistoricalPrices('AAPL', 'stock'); // Fetch stock prices
+      fetchHistoricalPrices('MSFT', 'stock'); // Fetch stock prices
+      fetchHistoricalPrices('BTC', 'crypto'); // Fetch crypto prices
+    });
   }, []);
+
+  console.log(historicalPrices);
 
   return (
     <>

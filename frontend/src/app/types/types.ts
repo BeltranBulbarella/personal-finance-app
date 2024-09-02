@@ -39,3 +39,8 @@ export interface Balances {
 export interface Prices {
   [key: string]: number | null;
 }
+
+export interface HistoricalPrice {
+  date: Date;
+  price: number;
+}

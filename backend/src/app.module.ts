@@ -6,6 +6,7 @@ import { AssetsModule } from './modules/assets/assets.module';
 import { TransactionsModule } from './modules/transactions/transactions.module';
 import { HoldingsModule } from './modules/holdings/holdings.module';
 import { BalanceModule } from './modules/balance/balance.module';
+import { HistoricalPriceModule } from './modules/historicalPrice/historicalPrice.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { BalanceModule } from './modules/balance/balance.module';
     TransactionsModule,
     HoldingsModule,
     BalanceModule,
+    HistoricalPriceModule,
   ],
   controllers: [HealthController],
   providers: [],
