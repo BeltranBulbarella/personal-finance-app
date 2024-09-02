@@ -31,7 +31,6 @@ export class AssetController {
   })
   @ApiResponse({ status: 400, description: 'Bad request.' })
   create(@Body() createAssetDto: CreateAssetDto) {
-    console.log('Creating asset with data:', createAssetDto);
     return this.assetService.createAsset(createAssetDto);
   }
 
@@ -47,7 +46,6 @@ export class AssetController {
     description: 'Returned all assets or filtered assets.',
   })
   findAll(@Query('type') type?: string) {
-    console.log('Finding all assets with type:', type);
     return this.assetService.findAllAssets(type);
   }
 
@@ -60,7 +58,6 @@ export class AssetController {
   })
   @ApiResponse({ status: 404, description: 'Asset not found.' })
   findOne(@Param('id') id: string) {
-    console.log('Fetching asset with id:', id);
     return this.assetService.findOneAsset(+id);
   }
 
@@ -72,7 +69,6 @@ export class AssetController {
     description: 'The asset has been successfully updated.',
   })
   update(@Param('id') id: string, @Body() updateAssetDto: UpdateAssetDto) {
-    console.log('Updating asset with id:', id, 'and data:', updateAssetDto);
     return this.assetService.updateAsset(+id, updateAssetDto);
   }
 
@@ -84,7 +80,6 @@ export class AssetController {
     description: 'The asset has been successfully deleted.',
   })
   remove(@Param('id') id: string) {
-    console.log('Deleting asset with id:', id);
     return this.assetService.deleteAsset(+id);
   }
 }

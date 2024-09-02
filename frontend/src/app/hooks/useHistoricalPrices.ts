@@ -1,10 +1,9 @@
 import axiosInstance from '@/utils/axiosInstance';
-import {ErrorToast, SuccessToast} from '@/app/components/common/Toast/Toast';
+import {ErrorToast} from '@/app/components/common/Toast/Toast';
 import {useHistoricalPricesStore} from '@/app/store/useHistoricalPricesStore';
 
 export const useHistoricalPrices = () => {
   const {
-    historicalPrices,
     setHistoricalPrices,
     historicalPricesLoading,
     setHistoricalPricesLoading,
@@ -44,7 +43,6 @@ export const useHistoricalPrices = () => {
 
       await axiosInstance.get('/historical-prices/update-prices');
       setUpdatingPrices(false);
-      SuccessToast('Asset prices updated successfully');
     } catch (error) {
       console.error('Updating historical prices error:', error);
       setUpdatingPrices(false);

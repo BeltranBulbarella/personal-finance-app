@@ -10,6 +10,8 @@ export class HistoricalPriceService {
     process.env.ALPHA_VANTAGE_API_KEY,
     process.env.ALPHA_VANTAGE_API_KEY_2,
     process.env.ALPHA_VANTAGE_API_KEY_3,
+    process.env.ALPHA_VANTAGE_API_KEY_4,
+    process.env.ALPHA_VANTAGE_API_KEY_5,
   ];
 
   constructor(private prisma: PrismaService) {}
@@ -28,7 +30,6 @@ export class HistoricalPriceService {
     const cryptos = await this.prisma.asset.findMany({
       where: { type: 'crypto' },
     });
-    console.log('cryptos', cryptos);
 
     for (const crypto of cryptos) {
       await this.fetchAndStoreCryptoPrice(crypto);
@@ -114,7 +115,6 @@ export class HistoricalPriceService {
     id: number;
     symbol: string;
   }) {
-    console.log('crypto', crypto);
     const cacheKey = `crypto:monthly_prices:${crypto.symbol}`;
     const cachedData = await redisClient.get(cacheKey);
 
