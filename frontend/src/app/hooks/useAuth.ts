@@ -37,6 +37,7 @@ export const useLogin = () => {
 export const useRegister = () => {
   const setToken = useAuthStore((state) => state.setToken);
   const setUser = useAuthStore((state) => state.setUser);
+  const router = useRouter();
 
   const register = async (
     name: string,
@@ -51,10 +52,13 @@ export const useRegister = () => {
         email,
         password,
       });
+      console.log('response', response);
       setToken(response.data.access_token);
       setUser(response.data.user);
+      Cookies.set('user', JSON.stringify(response.data.user), {expires: 7});
+      Cookies.set('auth_token', response.data.access_token, {expires: 7});
+      router.push('/dashboard');
       SuccessToast('Register successful');
-      return response.data;
     } catch (error) {
       if (isAxiosError(error) && error.response) {
         ErrorToast('Invalid email or password');

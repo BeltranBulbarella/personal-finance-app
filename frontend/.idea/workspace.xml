@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: added logout button, fixes in imports">
+    <list default="true" id="7364dd2e-82d9-484d-b71f-2a95be39bea5" name="Changes" comment="feat: made login and register responsive">
+      <change beforePath="$PROJECT_DIR$/../backend/src/modules/users/controllers/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/modules/users/controllers/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/modules/users/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/modules/users/services/users.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/common/Card/AuthCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Card/AuthCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/common/Card/PortfolioCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Card/PortfolioCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/common/Layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/Layout/Layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/common/ToggleButtons/ToggleButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/common/ToggleButtons/ToggleButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/ui/Dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/Dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/ui/SessionForm/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hooks/useAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/hooks/useHoldings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/hooks/useHoldings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,18 +38,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "BeltranBulbarella"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;BeltranBulbarella&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/BeltranBulbarella/personal-finance-app.git",
-    "accountId": "8933f1d0-2eb3-42e4-9011-8b2a3c158f2c"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/BeltranBulbarella/personal-finance-app.git&quot;,
+    &quot;accountId&quot;: &quot;8933f1d0-2eb3-42e4-9011-8b2a3c158f2c&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -61,25 +61,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "jsx.switch.disabled": "true",
-    "last_opened_file_path": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/src/app/(authRoutes)",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;jsx.switch.disabled&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/src/app/(authRoutes)&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/beltranbulbarella/WebstormProjects/personal-finance-app/frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/app/(authRoutes)" />
@@ -126,7 +126,8 @@
       <workItem from="1724413797221" duration="105000" />
       <workItem from="1724786467177" duration="1835000" />
       <workItem from="1725022586438" duration="247000" />
-      <workItem from="1725023175231" duration="11878000" />
+      <workItem from="1725023175231" duration="13516000" />
+      <workItem from="1725230537313" duration="3346000" />
     </task>
     <task id="LOCAL-00001" summary="fixed session styles">
       <option name="closed" value="true" />
@@ -160,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725208715174</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: made login and register responsive">
+      <option name="closed" value="true" />
+      <created>1725212161387</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725212161387</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +192,7 @@
     <MESSAGE value="added session components" />
     <MESSAGE value="feat: theme components" />
     <MESSAGE value="feat: added logout button, fixes in imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added logout button, fixes in imports" />
+    <MESSAGE value="feat: made login and register responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: made login and register responsive" />
   </component>
 </project>

@@ -1,6 +1,7 @@
 import axiosInstance from '@/utils/axiosInstance';
 import {useHoldingsStore} from '@/app/store/holdingsStore';
 import {ErrorToast, SuccessToast} from '@/app/components/common/Toast/Toast';
+import useAuthStore from '@/app/store/authStore';
 
 export const useHoldings = () => {
   const {
@@ -14,13 +15,16 @@ export const useHoldings = () => {
     setFetchedHoldings,
     setHoldingsLoading,
   } = useHoldingsStore();
+  const {user} = useAuthStore();
 
   const fetchHoldings = async () => {
     try {
       if (holdingsLoading) return;
       setHoldingsLoading(true);
 
-      const response = await axiosInstance.get('/holdings/with-prices/1');
+      const response = await axiosInstance.get(
+        `/holdings/with-prices/${user?.id}`,
+      );
       setHoldings(response.data);
       setFetchedHoldings(true);
       setHoldingsLoading(false);
@@ -36,7 +40,7 @@ export const useHoldings = () => {
       if (balancesLoading) return;
       setBalancesLoading(true);
 
-      const response = await axiosInstance.get('/balances/1');
+      const response = await axiosInstance.get(`/balances/${user?.id}`);
       setBalances(response.data);
       setFetchedBalances(true);
       setBalancesLoading(false);

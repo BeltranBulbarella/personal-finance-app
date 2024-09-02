@@ -33,11 +33,10 @@ export class UsersService {
         id: user.id,
         name: user.name,
         surname: user.surname,
-        email: user.email
-      }
+        email: user.email,
+      },
     };
   }
-
 
   async registerUser(dto: RegisterUserDto): Promise<any> {
     const hashedPassword = await bcrypt.hash(dto.password, 10);
@@ -49,6 +48,19 @@ export class UsersService {
         password: hashedPassword,
       },
     });
-    return user;
+
+    // Generate JWT token for the newly registered user
+    const payload = { username: user.email, sub: user.id };
+    const access_token = this.jwtService.sign(payload);
+
+    return {
+      access_token,
+      user: {
+        id: user.id,
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+      },
+    };
   }
 }

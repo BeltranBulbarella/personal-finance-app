@@ -1,4 +1,6 @@
 add platform bought and stored
+formik
+yup
 make table edtiable add remove params from it
 finish dashboard
 loading skeletons

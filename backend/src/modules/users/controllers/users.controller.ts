@@ -30,7 +30,21 @@ export class UsersController {
   @Post('register')
   @ApiOperation({ summary: 'Register a new user' })
   @ApiResponse({ status: 201, description: 'User registered successfully.' })
-  async register(@Body() registerUserDto: RegisterUserDto) {
-    return this.usersService.registerUser(registerUserDto);
+  async register(
+    @Body() registerUserDto: RegisterUserDto,
+    @Res() res: Response,
+  ) {
+    const registerResult =
+      await this.usersService.registerUser(registerUserDto);
+    res.cookie('auth_token', registerResult.access_token, {
+      httpOnly: true,
+      sameSite: 'strict',
+      path: '/',
+    });
+    return res.json({
+      success: true,
+      access_token: registerResult.access_token,
+      user: registerResult.user,
+    });
   }
 }
