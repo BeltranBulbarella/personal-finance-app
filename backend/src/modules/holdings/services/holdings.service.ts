@@ -10,7 +10,7 @@ import {
 } from '../dto/holding.dto';
 import { PrismaService } from '../../../services/prisma/prisma.service';
 import axios from 'axios';
-import redisClient from '../../../services/redis/redis';
+// import redisClient from '../../../services/redis/redis';
 
 @Injectable()
 export class HoldingService {
@@ -84,10 +84,10 @@ export class HoldingService {
     const cacheKey = `price:${type}:${symbol}`;
 
     // Check if price is in Redis cache
-    const cachedPrice = await redisClient.get(cacheKey);
-    if (cachedPrice) {
-      return parseFloat(cachedPrice);
-    }
+    // const cachedPrice = await redisClient.get(cacheKey);
+    // if (cachedPrice) {
+    //   return parseFloat(cachedPrice);
+    // }
 
     let price = 0;
     if (type === 'crypto') {
@@ -97,7 +97,7 @@ export class HoldingService {
     }
 
     // Cache the price in Redis with an expiration time of 10 minutes
-    await redisClient.set(cacheKey, price.toString(), 'EX', 600);
+    // await redisClient.set(cacheKey, price.toString(), 'EX', 600);
 
     return price;
   }

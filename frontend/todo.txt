@@ -1,4 +1,5 @@
 add platform bought and stored
+redis
 formik
 yup
 make table edtiable add remove params from it
@@ -9,6 +10,39 @@ virtualize assets
 testing
 deploy
 ci-cd
+fix docker
 
-redirect on register
 remove those that have 0 quantity
+Check this:
+Successfully updated prices for T
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:35 AM    WARN [HistoricalPriceService] No data found for symbol: WMT
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:35 AM    WARN [HistoricalPriceService] No data found for symbol: MCD
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:35 AM    WARN [HistoricalPriceService] No data found for symbol: COST
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:35 AM    WARN [HistoricalPriceService] No data found for symbol: TXN
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:35 AM    WARN [HistoricalPriceService] No data found for symbol: PM
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:35 AM    WARN [HistoricalPriceService] No data found for symbol: UNP
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:36 AM    WARN [HistoricalPriceService] No data found for symbol: UPS
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:36 AM    WARN [HistoricalPriceService] No data found for symbol: MS
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:36 AM    WARN [HistoricalPriceService] No data found for symbol: BA
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:36 AM    WARN [HistoricalPriceService] No data found for symbol: GS
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:36 AM    WARN [HistoricalPriceService] No data found for symbol: SBUX
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:37 AM    WARN [HistoricalPriceService] No data found for symbol: BLK
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:37 AM    WARN [HistoricalPriceService] No data found for symbol: CVX
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:37 AM    WARN [HistoricalPriceService] No data found for symbol: CAT
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:37 AM    WARN [HistoricalPriceService] No data found for symbol: DE
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:37 AM    WARN [HistoricalPriceService] No data found for symbol: GE
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:37 AM    WARN [HistoricalPriceService] No data found for symbol: RTX
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:37 AM    WARN [HistoricalPriceService] No data found for symbol: GILD
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:38 AM    WARN [HistoricalPriceService] No data found for symbol: SPGI
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:38 AM    WARN [HistoricalPriceService] No data found for symbol: CL
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:38 AM    WARN [HistoricalPriceService] No data found for symbol: FDX
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:38 AM    WARN [HistoricalPriceService] No data found for symbol: LMT
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:38 AM    WARN [HistoricalPriceService] No data found for symbol: C
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:39 AM    WARN [HistoricalPriceService] No data found for symbol: WBA
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:39 AM    WARN [HistoricalPriceService] No data found for symbol: EBAY
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:39 AM    WARN [HistoricalPriceService] No data found for symbol: BTC
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:39 AM    WARN [HistoricalPriceService] No data found for symbol: ETH
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:39 AM    WARN [HistoricalPriceService] No data found for symbol: USDT
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:40 AM    WARN [HistoricalPriceService] No data found for symbol: BNB
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:40 AM    WARN [HistoricalPriceService] No data found for symbol: ADA
+backend-1   | [Nest] 109  - 11/21/2024, 10:02:40 AM    WARN [HistoricalPriceService] No data found for symbol: SOL

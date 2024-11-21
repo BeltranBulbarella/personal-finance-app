@@ -7,8 +7,8 @@ import {
   Typography,
   TextField,
 } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+// import VisibilityIcon from '@mui/icons-material/visibility';
+// import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import {Field, Form, Formik} from 'formik';
 import {z} from 'zod';
 import {toFormikValidationSchema} from 'zod-formik-adapter';
@@ -96,11 +96,11 @@ export const LoginForm = () => {
                       edge='end'
                       sx={{marginRight: '1px'}}
                     >
-                      {showPassword ? (
-                        <VisibilityOffIcon />
-                      ) : (
-                        <VisibilityIcon />
-                      )}
+                      {/*{showPassword ? (*/}
+                      {/*  <VisibilityOffIcon />*/}
+                      {/*) : (*/}
+                      {/*  <VisibilityIcon />*/}
+                      {/*)}*/}
                     </IconButton>
                   </InputAdornment>
                 ),
