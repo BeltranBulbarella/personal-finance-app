@@ -5,6 +5,7 @@ import {
   getCurrentApiKey,
   switchToNextApiKey,
 } from '../../../utils/alphaVantageApiKey';
+import redisClient from '../../../services/redis/redis';
 
 // import redisClient from '../../../services/redis/redis';
 
@@ -36,12 +37,12 @@ export class HistoricalPriceService {
 
   private async fetchAndStoreStockPrice(stock: { id: number; symbol: string }) {
     const cacheKey = `stock:monthly_prices:${stock.symbol}`;
-    // const cachedData = await redisClient.get(cacheKey);
+    const cachedData = await redisClient.get(cacheKey);
 
-    // if (cachedData) {
-    //   this.logger.log(`Using cached data for ${stock.symbol}`);
-    //   return JSON.parse(cachedData);
-    // }
+    if (cachedData) {
+      this.logger.log(`Using cached data for ${stock.symbol}`);
+      return JSON.parse(cachedData);
+    }
 
     {
       const url = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&symbol=${stock.symbol}&apikey=${getCurrentApiKey()}`;
@@ -70,13 +71,13 @@ export class HistoricalPriceService {
             price: parseFloat(data[date]['5. adjusted close']),
           }));
 
-        // // Store in Redis
-        // await redisClient.set(
-        //   cacheKey,
-        //   JSON.stringify(last12Months),
-        //   'EX',
-        //   60 * 60 * 24 * 30, // Cache for 30 days
-        // );
+        // Store in Redis
+        await redisClient.set(
+          cacheKey,
+          JSON.stringify(last12Months),
+          'EX',
+          60 * 60 * 24 * 30, // Cache for 30 days
+        );
 
         // Store in PostgreSQL
         for (const entry of last12Months) {
@@ -114,12 +115,12 @@ export class HistoricalPriceService {
     symbol: string;
   }) {
     const cacheKey = `crypto:monthly_prices:${crypto.symbol}`;
-    // const cachedData = await redisClient.get(cacheKey);
+    const cachedData = await redisClient.get(cacheKey);
 
-    // if (cachedData) {
-    //   this.logger.log(`Using cached data for ${crypto.symbol}`);
-    //   return JSON.parse(cachedData);
-    // }
+    if (cachedData) {
+      this.logger.log(`Using cached data for ${crypto.symbol}`);
+      return JSON.parse(cachedData);
+    }
 
     {
       const url = `https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=${crypto.symbol}&market=USD&apikey=${getCurrentApiKey()}`;
@@ -148,13 +149,13 @@ export class HistoricalPriceService {
             price: parseFloat(data[date]['4b. close (USD)']),
           }));
 
-        // // Store in Redis
-        // await redisClient.set(
-        //   cacheKey,
-        //   JSON.stringify(last12Months),
-        //   'EX',
-        //   60 * 60 * 24 * 30, // Cache for 30 days
-        // );
+        // Store in Redis
+        await redisClient.set(
+          cacheKey,
+          JSON.stringify(last12Months),
+          'EX',
+          60 * 60 * 24 * 30, // Cache for 30 days
+        );
 
         // Store in PostgreSQL
         for (const entry of last12Months) {
@@ -189,11 +190,11 @@ export class HistoricalPriceService {
 
   async getMonthlyPrices(symbol: string) {
     const cacheKey = `asset:monthly_prices:${symbol}`;
-    // const cachedData = await redisClient.get(cacheKey);
+    const cachedData = await redisClient.get(cacheKey);
 
-    // if (cachedData) {
-    //   return JSON.parse(cachedData);
-    // }
+    if (cachedData) {
+      return JSON.parse(cachedData);
+    }
 
     const prices = await this.prisma.assetPrice.findMany({
       where: { asset: { symbol } },

@@ -1,6 +1,8 @@
 import {
   BadRequestException,
+  Inject,
   Injectable,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import {
@@ -10,11 +12,16 @@ import {
 } from '../dto/holding.dto';
 import { PrismaService } from '../../../services/prisma/prisma.service';
 import axios from 'axios';
-// import redisClient from '../../../services/redis/redis';
+import Redis from 'ioredis';
 
 @Injectable()
 export class HoldingService {
-  constructor(private prisma: PrismaService) {}
+  private readonly logger = new Logger(HoldingService.name);
+
+  constructor(
+    private prisma: PrismaService,
+    @Inject('REDIS_CLIENT') private redisClient: Redis,
+  ) {}
 
   async createHolding(dto: CreateHoldingDto) {
     return this.prisma.holding.create({ data: dto });
@@ -81,13 +88,14 @@ export class HoldingService {
   }
 
   async getCurrentPrice(symbol: string, type: string): Promise<number> {
-    // const cacheKey = `price:${type}:${symbol}`;
+    const cacheKey = `price:${type}:${symbol}`;
 
     // Check if price is in Redis cache
-    // const cachedPrice = await redisClient.get(cacheKey);
-    // if (cachedPrice) {
-    //   return parseFloat(cachedPrice);
-    // }
+    const cachedPrice = await this.redisClient.get(cacheKey);
+    if (cachedPrice) {
+      this.logger.log(`Using cached price for ${symbol}`);
+      return parseFloat(cachedPrice);
+    }
 
     let price = 0;
     if (type === 'crypto') {
@@ -97,7 +105,7 @@ export class HoldingService {
     }
 
     // Cache the price in Redis with an expiration time of 10 minutes
-    // await redisClient.set(cacheKey, price.toString(), 'EX', 600);
+    await this.redisClient.set(cacheKey, price.toString(), 'EX', 600);
 
     return price;
   }

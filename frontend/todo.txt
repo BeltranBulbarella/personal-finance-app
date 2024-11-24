@@ -1,7 +1,3 @@
-add platform bought and stored
-
-
-redis
 formik
 yup
 make table edtiable add remove params from it

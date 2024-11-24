@@ -16,6 +16,7 @@ const transactions_module_1 = require("./modules/transactions/transactions.modul
 const holdings_module_1 = require("./modules/holdings/holdings.module");
 const balance_module_1 = require("./modules/balance/balance.module");
 const historicalPrice_module_1 = require("./modules/historicalPrice/historicalPrice.module");
+const redis_module_1 = require("./services/redis/redis.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -29,6 +30,7 @@ exports.AppModule = AppModule = __decorate([
             holdings_module_1.HoldingsModule,
             balance_module_1.BalanceModule,
             historicalPrice_module_1.HistoricalPriceModule,
+            redis_module_1.RedisModule,
         ],
         controllers: [health_controller_1.HealthController],
         providers: [],
