@@ -57,6 +57,7 @@ model Holding {
   quantity        Float?
   moneySpent      Float?
   averageBuyPrice Float  @default(0)
+  realizedPnL     Float  @default(0)
   user            User   @relation(fields: [userId], references: [id])
   asset           Asset  @relation(fields: [assetId], references: [id])
 }

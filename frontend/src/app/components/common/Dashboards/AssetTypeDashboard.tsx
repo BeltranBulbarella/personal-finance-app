@@ -29,14 +29,17 @@ export const AssetTypeDashboard = ({
   }, []);
 
   const filteredHoldings = holdings.filter((h) => h.asset.type === assetType);
-  const mostValuedSymbol = filteredHoldings.reduce(
-    (max, h) => {
-      if (!h.totalValue || !max.totalValue) return h;
-      if (h.totalValue > max.totalValue) return h;
-      return max;
-    },
-    filteredHoldings[0] || {asset: {symbol: 'BTC'}},
-  ).asset.symbol;
+  const mostValuedSymbol =
+    assetType === 'crypto'
+      ? 'BTC'
+      : filteredHoldings.reduce(
+          (max, h) => {
+            if (!h.totalValue || !max.totalValue) return h;
+            if (h.totalValue > max.totalValue) return h;
+            return max;
+          },
+          filteredHoldings[0] || {asset: {symbol: 'BTC'}},
+        ).asset.symbol;
 
   return (
     <Box>

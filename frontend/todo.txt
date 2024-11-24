@@ -10,9 +10,7 @@ virtualize assets
 testing
 deploy
 ci-cd
-fix docker
 
-remove those that have 0 quantity
 Check this:
 Successfully updated prices for T
 backend-1   | [Nest] 109  - 11/21/2024, 10:02:35 AM    WARN [HistoricalPriceService] No data found for symbol: WMT

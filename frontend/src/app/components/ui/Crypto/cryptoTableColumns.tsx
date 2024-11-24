@@ -15,7 +15,10 @@ export const cryptoTableColumns = [
     id: 'quantity',
     label: 'Quantity',
     minWidth: 100,
-    format: (value: {quantity: number}) => value.quantity,
+    format: (value: {quantity: number}) => {
+      if (value.quantity > 0) return value.quantity;
+      return '-';
+    },
   },
   {
     id: 'currentPrice',
@@ -28,16 +31,19 @@ export const cryptoTableColumns = [
     id: 'averageBuyPrice',
     label: 'Average Buy Price',
     minWidth: 100,
-    format: (value: {averageBuyPrice: number}) =>
-      `$${value.averageBuyPrice.toFixed(2)}`,
+    format: (value: {averageBuyPrice: number}) => {
+      if (value.averageBuyPrice > 0)
+        return `$${value.averageBuyPrice.toFixed(2)}`;
+      return '-';
+    },
   },
   {
     id: 'winnings',
-    label: 'PNL',
+    label: 'Unrealized PNL',
     minWidth: 100,
     format: (value: {pnl: number}) => (
       <span style={{color: value.pnl >= 0 ? 'green' : 'red'}}>
-        {value.pnl.toFixed(2)}
+        {value.pnl > 0 ? value.pnl.toFixed(2) : '-'}
       </span>
     ),
   },
@@ -45,6 +51,19 @@ export const cryptoTableColumns = [
     id: 'moneySpent',
     label: 'Cost/Money spent',
     minWidth: 100,
-    format: (value: {moneySpent: number}) => `$${value.moneySpent.toFixed(2)}`,
+    format: (value: {moneySpent: number}) => {
+      if (value.moneySpent > 0) return `$${value.moneySpent.toFixed(2)}`;
+      return '-';
+    },
+  },
+  {
+    id: 'realizedPnL',
+    label: 'Realized PNL',
+    minWidth: 100,
+    format: (value: {realizedPnL: number}) => (
+      <span style={{color: value.realizedPnL >= 0 ? 'green' : 'red'}}>
+        {value.realizedPnL > 0 ? value.realizedPnL.toFixed(2) : '-'}
+      </span>
+    ),
   },
 ];

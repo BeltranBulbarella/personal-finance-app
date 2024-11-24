@@ -15,6 +15,12 @@ export class CreateHoldingDto {
     description: 'Average buy price of the asset',
   })
   averageBuyPrice: number;
+
+  @ApiProperty({
+    example: 1500,
+    description: 'Realized profit and loss for this holding',
+  })
+  realizedPnL: number;
 }
 
 export class UpdateHoldingDto {
@@ -31,6 +37,13 @@ export class UpdateHoldingDto {
     required: false,
   })
   averageBuyPrice?: number;
+
+  @ApiProperty({
+    example: 1500,
+    description: 'New realized profit and loss for this holding',
+    required: false,
+  })
+  realizedPnL?: number;
 }
 
 export class EnhancedHoldingDto extends CreateHoldingDto {

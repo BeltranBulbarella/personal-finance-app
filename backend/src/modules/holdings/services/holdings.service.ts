@@ -81,7 +81,7 @@ export class HoldingService {
   }
 
   async getCurrentPrice(symbol: string, type: string): Promise<number> {
-    const cacheKey = `price:${type}:${symbol}`;
+    // const cacheKey = `price:${type}:${symbol}`;
 
     // Check if price is in Redis cache
     // const cachedPrice = await redisClient.get(cacheKey);
@@ -181,6 +181,7 @@ export class HoldingService {
           ...holding,
           currentPrice,
           pnl,
+          realizedPnL: holding.realizedPnL,
         };
       }),
     );
