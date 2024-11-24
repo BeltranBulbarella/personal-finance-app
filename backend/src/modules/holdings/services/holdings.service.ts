@@ -182,6 +182,8 @@ export class HoldingService {
           currentPrice,
           pnl,
           realizedPnL: holding.realizedPnL,
+          platformBought: holding.platformBought,
+          platformStored: holding.platformStored,
         };
       }),
     );

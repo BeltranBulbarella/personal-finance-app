@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {IsDate, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateIf} from 'class-validator';
+import {
+  IsDate,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  ValidateIf,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateTransactionDto {
@@ -16,18 +23,25 @@ export class CreateTransactionDto {
   @ApiProperty({ example: 10, description: 'Quantity of the transaction' })
   @IsNumber()
   @IsOptional()
-  @ValidateIf(o => !o.moneySpent && o.moneySpent !== 0)
+  @ValidateIf((o) => !o.moneySpent && o.moneySpent !== 0)
   quantity?: number;
 
-  @ApiProperty({ example: 60000, description: 'Price per unit at the time of transaction' })
+  @ApiProperty({
+    example: 60000,
+    description: 'Price per unit at the time of transaction',
+  })
   @IsNumber()
   @IsNotEmpty()
   pricePerUnit: number;
 
-  @ApiProperty({ example: 800, description: 'Money spent on the transaction', required: false })
+  @ApiProperty({
+    example: 800,
+    description: 'Money spent on the transaction',
+    required: false,
+  })
   @IsNumber()
   @IsOptional()
-  @ValidateIf(o => !o.quantity && o.quantity !== 0)
+  @ValidateIf((o) => !o.quantity && o.quantity !== 0)
   moneySpent?: number;
 
   @ApiProperty({
@@ -46,4 +60,16 @@ export class CreateTransactionDto {
   @IsNotEmpty()
   @Type(() => Date)
   transactionDate: Date;
+
+  @ApiProperty({
+    example: 'Binance',
+    description: 'Platform where the asset was bought',
+  })
+  platformBought?: string;
+
+  @ApiProperty({
+    example: 'Coinbase',
+    description: 'Platform where the asset is stored',
+  })
+  platformStored?: string;
 }

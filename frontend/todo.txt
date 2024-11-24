@@ -1,4 +1,6 @@
 add platform bought and stored
+
+
 redis
 formik
 yup

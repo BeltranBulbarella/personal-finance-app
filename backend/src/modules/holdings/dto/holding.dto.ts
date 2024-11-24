@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateHoldingDto {
   @ApiProperty({ example: 1, description: 'User ID' })
@@ -21,6 +22,22 @@ export class CreateHoldingDto {
     description: 'Realized profit and loss for this holding',
   })
   realizedPnL: number;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: 'Binance',
+    description: 'Platform where the asset was bought',
+  })
+  platformBought?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: 'Coinbase',
+    description: 'Platform where the asset is stored',
+  })
+  platformStored?: string;
 }
 
 export class UpdateHoldingDto {
@@ -44,6 +61,22 @@ export class UpdateHoldingDto {
     required: false,
   })
   realizedPnL?: number;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: 'Binance',
+    description: 'Platform where the asset was bought',
+  })
+  platformBought?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    example: 'Coinbase',
+    description: 'Platform where the asset is stored',
+  })
+  platformStored?: string;
 }
 
 export class EnhancedHoldingDto extends CreateHoldingDto {

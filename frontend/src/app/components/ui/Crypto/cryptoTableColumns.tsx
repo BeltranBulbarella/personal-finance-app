@@ -66,4 +66,16 @@ export const cryptoTableColumns = [
       </span>
     ),
   },
+  {
+    id: 'platformBought',
+    label: 'Platform Bought',
+    minWidth: 100,
+    format: (value: {platformBought: string}) => value.platformBought || '-',
+  },
+  {
+    id: 'platformStored',
+    label: 'Platform Stored',
+    minWidth: 100,
+    format: (value: {platformStored: string}) => value.platformStored || '-',
+  },
 ];

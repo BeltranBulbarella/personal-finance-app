@@ -58,6 +58,8 @@ model Holding {
   moneySpent      Float?
   averageBuyPrice Float  @default(0)
   realizedPnL     Float  @default(0)
+  platformStored  String?
+  platformBought  String?
   user            User   @relation(fields: [userId], references: [id])
   asset           Asset  @relation(fields: [assetId], references: [id])
 }

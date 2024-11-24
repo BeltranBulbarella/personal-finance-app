@@ -122,6 +122,10 @@ export class TransactionService {
             quantity: newQuantity,
             moneySpent: newTotalMoneySpent,
             averageBuyPrice: newAverageBuyPrice,
+            platformBought:
+              transaction.platformBought || existingHolding.platformBought,
+            platformStored:
+              transaction.platformStored || existingHolding.platformStored,
           },
         });
       } else {
@@ -134,6 +138,8 @@ export class TransactionService {
             moneySpent: additionalCost,
             averageBuyPrice: transaction.pricePerUnit, // Initial average price is the transaction price per unit
             realizedPnL: 0,
+            platformBought: transaction.platformBought || null,
+            platformStored: transaction.platformStored || null,
           },
         });
       }
