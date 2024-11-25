@@ -26,6 +26,10 @@ export interface Holding {
   currentPrice?: number;
   totalValue?: number;
   winnings?: number;
+  moneySpent?: number;
+  realizedPnL?: number;
+  platformBought?: string;
+  platformStored?: string;
 }
 
 export interface Balances {
@@ -43,4 +47,9 @@ export interface Prices {
 export interface HistoricalPrice {
   date: Date;
   price: number;
+}
+
+export interface OrderType<T> {
+  order: 'asc' | 'desc';
+  orderBy: keyof T;
 }

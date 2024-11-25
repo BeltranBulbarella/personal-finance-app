@@ -1,15 +1,19 @@
+import {Holding} from '@/app/types/types';
+
 export const cryptoTableColumns = [
   {
     id: 'symbol',
     label: 'Symbol',
     minWidth: 100,
     format: (value: {asset: {symbol: string}}) => value.asset.symbol,
+    getSortValue: (row: Holding) => row.asset.symbol.toLowerCase(), // Ensuring case-insensitive sorting
   },
   {
     id: 'name',
     label: 'Name',
     minWidth: 100,
     format: (value: {asset: {name: string}}) => value.asset.name,
+    getSortValue: (row: Holding) => row.asset.name.toLowerCase(), // Ensuring case-insensitive sorting
   },
   {
     id: 'quantity',
@@ -19,6 +23,7 @@ export const cryptoTableColumns = [
       if (value.quantity > 0) return value.quantity;
       return '-';
     },
+    getSortValue: (row: Holding) => row.quantity,
   },
   {
     id: 'currentPrice',
@@ -26,6 +31,7 @@ export const cryptoTableColumns = [
     minWidth: 100,
     format: (value: {currentPrice: number}) =>
       `$${value.currentPrice.toFixed(2)}`,
+    getSortValue: (row: Holding) => row.currentPrice || 0,
   },
   {
     id: 'averageBuyPrice',
@@ -36,6 +42,7 @@ export const cryptoTableColumns = [
         return `$${value.averageBuyPrice.toFixed(2)}`;
       return '-';
     },
+    getSortValue: (row: Holding) => row.averageBuyPrice,
   },
   {
     id: 'winnings',
@@ -46,15 +53,17 @@ export const cryptoTableColumns = [
         {value.pnl > 0 ? value.pnl.toFixed(2) : '-'}
       </span>
     ),
+    getSortValue: (row: Holding) => row.winnings || 0,
   },
   {
     id: 'moneySpent',
-    label: 'Cost/Money spent',
+    label: 'Cost/Money Spent',
     minWidth: 100,
     format: (value: {moneySpent: number}) => {
       if (value.moneySpent > 0) return `$${value.moneySpent.toFixed(2)}`;
       return '-';
     },
+    getSortValue: (row: Holding) => row.moneySpent || 0,
   },
   {
     id: 'realizedPnL',
@@ -65,17 +74,20 @@ export const cryptoTableColumns = [
         {value.realizedPnL > 0 ? value.realizedPnL.toFixed(2) : '-'}
       </span>
     ),
+    getSortValue: (row: Holding) => row.realizedPnL || 0,
   },
   {
     id: 'platformBought',
     label: 'Platform Bought',
     minWidth: 100,
     format: (value: {platformBought: string}) => value.platformBought || '-',
+    getSortValue: (row: Holding) => row.platformBought?.toLowerCase(),
   },
   {
     id: 'platformStored',
     label: 'Platform Stored',
     minWidth: 100,
     format: (value: {platformStored: string}) => value.platformStored || '-',
+    getSortValue: (row: Holding) => row.platformStored?.toLowerCase(),
   },
 ];
