@@ -24,11 +24,11 @@ export const Dashboard = () => {
     if (!fetchedHoldings && user) {
       fetchHoldings();
     }
-    updateHistoricalPrices().then(() => {
-      fetchHistoricalPrices('AAPL', 'stock'); // Fetch stock prices
-      fetchHistoricalPrices('MSFT', 'stock'); // Fetch stock prices
-      fetchHistoricalPrices('BTC', 'crypto'); // Fetch crypto prices
-    });
+    // updateHistoricalPrices().then(() => {
+    //   fetchHistoricalPrices('AAPL', 'stock'); // Fetch stock prices
+    //   fetchHistoricalPrices('MSFT', 'stock'); // Fetch stock prices
+    //   fetchHistoricalPrices('BTC', 'crypto'); // Fetch crypto prices
+    // });
   }, []);
 
   console.log(historicalPrices);

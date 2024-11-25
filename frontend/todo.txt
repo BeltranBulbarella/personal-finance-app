@@ -1,8 +1,5 @@
-
-graph bugs
 finish dashboard
 loading skeletons
-token stuff
 virtualize assets, check if too many requests of assets. If being saved correctly.
 testing
 deploy
