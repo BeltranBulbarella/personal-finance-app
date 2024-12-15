@@ -1,3 +1,4 @@
+check redis for the data, check too many requests.
 finish dashboard
 loading skeletons
 virtualize assets, check if too many requests of assets. If being saved correctly.

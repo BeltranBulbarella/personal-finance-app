@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import {useRouter} from 'next/navigation';
+import {ErrorToast} from '@/app/components/common/Toast/Toast';
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -27,14 +28,12 @@ axiosInstance.interceptors.response.use(
     const router = useRouter();
     if (error.response && error.response.status === 401) {
       console.log('Unauthorized, redirecting to login...');
+      ErrorToast('Unauthorized, please login');
       // Remove the invalid token
       Cookies.remove('auth_token');
 
       // Redirect to login page
       router.push('/');
-
-      // Optionally, you can also display a notification to the user
-      // e.g., using a toast library
     }
     return Promise.reject(error);
   },

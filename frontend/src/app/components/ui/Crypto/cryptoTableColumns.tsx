@@ -50,10 +50,10 @@ export const cryptoTableColumns = [
     minWidth: 100,
     format: (value: {pnl: number}) => (
       <span style={{color: value.pnl >= 0 ? 'green' : 'red'}}>
-        {value.pnl > 0 ? value.pnl.toFixed(2) : '-'}
+        {value.pnl.toFixed(2)}
       </span>
     ),
-    getSortValue: (row: Holding) => row.winnings || 0,
+    getSortValue: (row: Holding) => row.winnings?.toFixed(2) || 0,
   },
   {
     id: 'moneySpent',
